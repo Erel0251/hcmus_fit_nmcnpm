@@ -36,21 +36,30 @@
 
                 <div class="col-md-6 d-flex align-items-center justify-content-center">
 
-                    <form class="d-flex flex-column justify-content-around h-75" style="width: 80%;">
+                    <form action="./login.php" method="post" class="d-flex flex-column justify-content-around h-75" style="width: 80%;">
                         <div class="text-center h1 " style="color: #ED00F2">Đăng nhập</div>
+
+                        <?php if (isset($_GET['Error'])) { ?>
+                            <div class="text-center h6 text-danger">
+                            <?php echo $_GET['Error']; ?></div>
+                        
+                        <?php }?>
 
                         <!-- Username input -->
                         <div class="form-outline ">
-                            <label class="form-label" for="thêm id vào đây">Tên đăng nhập</label>
-                            <input type="email" id="" class="form-control" placeholder="Enter username" />
+                            <label class="form-label" for="username">Tên đăng nhập</label>
+                            <?php
+                                
+                            ?>
 
+                            <input type="text" id="username" name="username" class="form-control" placeholder="Enter username" required/>
                         </div>
 
                         <!-- Password input -->
                         <div class="form-outline ">
-                            <label class="form-label" for="">Mật khẩu</label>
+                            <label class="form-label" for="password">Mật khẩu</label>
                             <div class="input-group">
-                                <input type="password" id="" class="form-control" placeholder="Enter password" />
+                                <input type="password" id="password" name="password" class="form-control" placeholder="Enter password" required/>
                                 <button class="btn btn-outline-secondary" type="button" id="button-addon"><img
                                         src="./images/png/icons/002-hide.png" alt=""></button>
                             </div>
@@ -65,16 +74,13 @@
                             </label>
                         </div>
 
-                        <!-- Register -->
+                        <!-- Login/Register -->
                         <div class="text-center ">
-                            <!--
-                                <button type="button" class="btn text-white"
-                                style="border-radius: 8rem; padding-left: 2.5rem; padding-right: 2.5rem; background: #CA9FC8;">Đăng nhập</button>
-                            -->
 
-                            <a href="./client/home.php" class="btn text-white"
-                                style="border-radius: 8rem; padding: 0.75rem 2.5rem; background: #CA9FC8;">Đăng
-                                nhập</a>
+                            <button type="submit" class="btn text-white"
+                                style="border-radius: 8rem; padding: 0.75rem 2.5rem; background: #CA9FC8;">Đăng nhập
+                            </button>
+
                             <p class="small fw-bold mt-2 pt-1 mb-0">Chưa có tài khoản? <a href="./register.php"
                                     class="link-primary">Đăng ký</a></p>
                         </div>
