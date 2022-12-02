@@ -37,10 +37,12 @@
                 <div class="col-md-6 d-flex align-items-center justify-content-center">
 
                     <form action="./login.php" method="post" class="d-flex flex-column justify-content-around h-75" style="width: 80%;">
+                        <!-- Title -->
                         <div class="text-center h1 " style="color: #ED00F2">Đăng nhập</div>
 
+                        <!-- Error log -->
                         <?php if (isset($_GET['Error'])) { ?>
-                            <div class="text-center h6 text-danger">
+                            <div class="text-left alert alert-danger p-2">
                             <?php echo $_GET['Error']; ?></div>
                         
                         <?php }?>
@@ -48,10 +50,6 @@
                         <!-- Username input -->
                         <div class="form-outline ">
                             <label class="form-label" for="username">Tên đăng nhập</label>
-                            <?php
-                                
-                            ?>
-
                             <input type="text" id="username" name="username" class="form-control" placeholder="Enter username" required/>
                         </div>
 

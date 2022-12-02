@@ -3,14 +3,6 @@ session_start();
 include "./database/db_connect.php";
 
 if (isset($_POST['username']) && isset($_POST['password'])) {
-    function validate($data)
-    {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-    }
-
     $username = $_POST['username'];
     $password = $_POST['password'];
 
@@ -29,8 +21,6 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         header("Location: ./index.php?Error=Incorrect username or password");
         exit();
     }
-
-
 } else {
     header("Location: ./index.php");
     exit();
