@@ -41,28 +41,28 @@
                         <!-- Error log -->
                         <?php if (isset($_GET['Error'])) { ?>
                             <div class="text-left alert alert-danger p-2">
-                            <?php echo $_GET['Error']; ?></div>
-                        
-                        <?php } else?>
+                                <?php echo $_GET['Error']; ?></div>
+
+                        <?php } else ?>
 
                         <!-- Success log -->
                         <?php if (isset($_GET['Success'])) { ?>
                             <div class="text-left alert alert-success p-2">
-                            <?php echo $_GET['Success']; ?></div>
-                        
-                        <?php }?>
+                                <?php echo $_GET['Success']; ?></div>
+
+                        <?php } ?>
 
                         <!-- Họ tên input -->
                         <div class="form-outline ">
                             <label class="form-label" for="fullname">Họ và tên</label>
-                            <input type="text" id="fullname" name="fullname" class="form-control" placeholder="Full name" required/>
+                            <input type="text" id="fullname" name="fullname" class="form-control" placeholder="Full name" required />
                         </div>
 
 
                         <!-- Username input -->
                         <div class="form-outline ">
                             <label class="form-label" for="username">Tên đăng nhập (MSSV/ Mã CBNV-GV)</label>
-                            <input type="text" id="username" name="username" class="form-control" placeholder="Username" required/>
+                            <input type="text" id="username" name="username" class="form-control" placeholder="Username" required />
                         </div>
 
 
@@ -89,14 +89,14 @@
                         <!-- Email input -->
                         <div class="form-outline ">
                             <label class="form-label" for="email">Email</label>
-                            <input type="email" id="email" name="email" class="form-control" placeholder="Email" required/>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Email" required />
                         </div>
 
 
                         <!-- Phonenumber input -->
                         <div class="form-outline ">
                             <label class="form-label" for="sdt">Số điện thoại</label>
-                            <input type="tel" id="sdt" name="sdt" class="form-control" placeholder="Phone number" required/>
+                            <input type="tel" id="sdt" name="sdt" class="form-control" placeholder="Phone number" required />
                         </div>
 
 
@@ -104,8 +104,10 @@
                         <div class="form-outline ">
                             <label class="form-label" for="password">Mật khẩu</label>
                             <div class="input-group">
-                                <input type="password" id="password" name="password" class="form-control" placeholder="Password" required/>
-                                <button class="btn btn-outline-secondary" onclick="myFunction('password', 'button1')" type="button"><img src="./images/png/icons/002-hide.png" id="button1" alt=""></button>
+                                <input type="password" id="password" name="password" class="form-control" placeholder="Password" required />
+                                <button class="btn btn-outline-secondary" onclick="myFunction('password', 'button1')" type="button">
+                                    <img src="./images/png/icons/002-hide.png" id="button1" alt="">
+                                </button>
                             </div>
                         </div>
 
@@ -113,8 +115,10 @@
                         <div class="form-outline ">
                             <label class="form-label" for="repassword">Nhập lại mật khẩu</label>
                             <div class="input-group">
-                                <input type="password" id="repassword" name="repassword" class="form-control" placeholder="Re-enter Password" required/>
-                                <button class="btn btn-outline-secondary" onclick="myFunction('repassword', 'button2')" type="button"><img src="./images/png/icons/002-hide.png" id="button2" alt=""></button>
+                                <input type="password" id="repassword" name="repassword" class="form-control" placeholder="Re-enter Password" required />
+                                <button class="btn btn-outline-secondary" onclick="myFunction('repassword', 'button2')" type="button">
+                                    <img src="./images/png/icons/002-hide.png" id="button2" alt="">
+                                </button>
                             </div>
                         </div>
 

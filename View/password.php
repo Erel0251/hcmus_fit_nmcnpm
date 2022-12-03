@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +19,8 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- ========== Bootstrap     ========== -->
+    <!-- ========== Javascript   ========== -->
+    <script src="../script.js"></script>
 
     <title>Quản lý căn tin</title>
 </head>
@@ -32,7 +38,7 @@
                     <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                         data-bs-auto-close="true" aria-expanded="false"></button>
                     <ul class="dropdown-menu">
-                        <form class="p-1">
+                        <form action="../Control/change-password.php" method="post" class="p-1">
 
                             <div class=""><strong>Giá</strong></div>
                             <div class="d-flex justify-content-center">
@@ -77,26 +83,23 @@
 
                 <!-- Profile -->
                 <div class="dropdown">
-                    <button class="btn btn-outline-info dropdown-toggle" type="button" id="dropdownMenuButton1"
-                        data-bs-toggle="dropdown" aria-expanded="false">
+                    <button class="btn btn-outline-info dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="../images/png/icons/004-user.png" alt="">
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
                         <li>
-                            <h3 class="dropdown-header text-end">Xin chào <span class="text-primary">20120485</span>
+                            <h3 class="dropdown-header text-end">Xin chào <span class="text-primary"><?php echo $_SESSION['fullname'] ?></span>
                             </h3>
                         </li>
-                        <li><a class="dropdown-item text-end" href="../index.php">Đăng xuất</a></li>
+                        <li><a class="dropdown-item text-end" href="../Control/logout.php">Đăng xuất</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
                         <li>
-                            <h4 class="dropdown-header">Bạn là <span class="text-warning">Sinh viên</span></h4>
+                            <h4 class="dropdown-header">Bạn là <span class="text-warning"> <?php echo $_SESSION['role'] ?></span></h4>
                         </li>
                         <li><a class="dropdown-item" href="./profile.php">Thông tin cá nhân</a></li>
                         <li><a class="dropdown-item" href="./password.php">Đổi mật khẩu</a></li>
-                        <li><a class="dropdown-item" href="./menu.php">Quản lý thực đơn</a></li>
-                        <li><a class="dropdown-item" href="./inventory.php">Quản lý hàng tồn</a></li>
                     </ul>
                 </div>
 
@@ -129,36 +132,49 @@
 
                 <div class="col-md-6 d-flex justify-content-center align-items-center">
 
-                    <form class="w-75 d-flex flex-column justify-content-around">
+                    <form action="../Control/change-password.php" method="post" class="w-75 d-flex flex-column justify-content-around">
                         
+                        <!-- Error log -->
+                        <?php if (isset($_GET['Error'])) { ?>
+                            <div class="text-left alert alert-danger p-2">
+                                <?php echo $_GET['Error']; ?></div>
+
+                        <?php } else ?>
+
+                        <!-- Success log -->
+                        <?php if (isset($_GET['Success'])) { ?>
+                            <div class="text-left alert alert-success p-2">
+                                <?php echo $_GET['Success']; ?></div>
+
+                        <?php } ?>
 
                         <!-- Old Password input -->
                         <div class="row my-2 form-outline ">
-                            <label class="form-label" for="">Mật khẩu cũ</label>
+                            <label class="form-label" for="oldpassword">Mật khẩu cũ</label>
                             <div class="input-group">
-                                <input type="password" id="" class="form-control" value="admin" />
-                                <button class="btn btn-outline-secondary" type="button" id="button-addon2"><img
-                                        src="../images/png/icons/002-hide.png" alt=""></button>
+                                <input type="password" id="oldpassword" name="oldpassword" class="form-control" placeholder="Password" required/>
+                                <button class="btn btn-outline-secondary" onclick="myFunction('oldpassword', 'button1')" type="button"><img
+                                        src="../images/png/icons/002-hide.png" id="button1" alt=""></button>
                             </div>
                         </div>
 
                         <!-- Password input -->
                         <div class="row my-2 form-outline ">
-                            <label class="form-label" for="">Mật khẩu mới</label>
+                            <label class="form-label" for="password">Mật khẩu mới</label>
                             <div class="input-group">
-                                <input type="password" id="" class="form-control" value="admin" />
-                                <button class="btn btn-outline-secondary" type="button" id="button-addon2"><img
-                                        src="../images/png/icons/002-hide.png" alt=""></button>
+                                <input type="password" id="password" name="password" class="form-control" placeholder="New password" required/>
+                                <button class="btn btn-outline-secondary" onclick="myFunction('password', 'button2')" type="button"><img
+                                        src="../images/png/icons/002-hide.png" id="button2" alt=""></button>
                             </div>
                         </div>
 
                         <!-- Re-Enter Password input -->
                         <div class="row my-2 form-outline ">
-                            <label class="form-label" for="">Nhập lại mật khẩu</label>
+                            <label class="form-label" for="repassword">Nhập lại mật khẩu</label>
                             <div class="input-group">
-                                <input type="password" id="" class="form-control" value="admin" />
-                                <button class="btn btn-outline-secondary" type="button" id="button-addon2"><img
-                                        src="../images/png/icons/002-hide.png" alt=""></button>
+                                <input type="password" id="repassword" name="repassword" class="form-control" placeholder="Confirm new password" required/>
+                                <button class="btn btn-outline-secondary" onclick="myFunction('repassword', 'button3')" type="button"><img
+                                        src="../images/png/icons/002-hide.png" id="button3" alt=""></button>
                             </div>
                         </div>
 
@@ -169,11 +185,11 @@
                                 style="border-radius: 8rem; padding-left: 2.5rem; padding-right: 2.5rem; background: #CA9FC8;">Đăng
                                 ký</button>
                             -->
-                            <a href="#" class="col-4 btn text-white"
+                            <a href="./home.php" class="col-4 btn text-white"
                                 style="border-radius: 8rem; padding: 0.75rem 2.0rem; background: #9C9C9C;">Hủy</a>
 
-                            <a href="#" class="col-4 btn text-white"
-                                style="border-radius: 8rem; padding: 0.75rem 2.0rem; background: #80FF80;">Xác nhận</a>
+                            <button type="submit" class="col-4 btn text-white"
+                                style="border-radius: 8rem; padding: 0.75rem 2.0rem; background: #80FF80;">Xác nhận</button>
                         </div>
 
                     </form>
@@ -181,23 +197,8 @@
             </div>
         </div>
 
-
-
     </div>
-    <!--
-    <div>Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a
-            href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-    <div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a>
-        from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-    <div>Icons made by <a href="https://www.flaticon.com/authors/th-studio" title="th studio">th studio</a> from <a
-            href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-
--->
 
 </body>
 
 </html>
-
-<?php
-$sql = "UPDATE `nguoi_dung` SET `HOTEN` = 'mr. somebody' WHERE `nguoi_dung`.`USERNAME` = 'admin'";
-?>
