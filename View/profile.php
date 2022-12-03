@@ -1,9 +1,13 @@
 <?php
 session_start();
+include "../Model/db_connect.php";
+$username = $_SESSION['username'];
+$sql = "SELECT * FROM `nguoi_dung` WHERE `USERNAME` LIKE '$username'";
 
-
+$query = $conn->query($sql);
+$query->setFetchMode(PDO::FETCH_ASSOC);
+$row = $query->fetch();
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -86,22 +90,25 @@ session_start();
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
                         <li>
-                            <h3 class="dropdown-header text-end">Xin chào <span class="text-primary"><?php echo $_SESSION['username'] ?></span>
+                            <h3 class="dropdown-header text-end">Xin chào <span class="text-primary">20120485</span>
                             </h3>
                         </li>
-                        <li><a class="dropdown-item text-end" href="../logout.php">Đăng xuất</a></li>
+                        <li><a class="dropdown-item text-end" href="../index.php">Đăng xuất</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
                         <li>
-                            <h4 class="dropdown-header">Bạn là <span class="text-warning"> <?php echo $_SESSION['role'] ?></span></h4>
+                            <h4 class="dropdown-header">Bạn là <span class="text-warning">Sinh viên</span></h4>
                         </li>
                         <li><a class="dropdown-item" href="./profile.php">Thông tin cá nhân</a></li>
                         <li><a class="dropdown-item" href="./password.php">Đổi mật khẩu</a></li>
+                        <li><a class="dropdown-item" href="./menu.php">Quản lý thực đơn</a></li>
+                        <li><a class="dropdown-item" href="./inventory.php">Quản lý hàng tồn</a></li>
                     </ul>
                 </div>
 
             </div>
+
 
             <!-- Image -->
             <div class="row position-relative">
@@ -114,86 +121,90 @@ session_start();
             </div>
 
 
-            <!-- Header menu -->
-            <div class="row ">
-                <a href="#" class="col h3 p-1 rounded-top bg-white text-center text-decoration-none text-danger">
-                    Đồ ăn
-                </a>
-                <a href="./home-drink.php" class="col h3 p-1 rounded-top bg-secondary text-center text-decoration-none text-dark">
-                    Thức uống
-                </a>
-            </div>
-
-
             <!-- Body menu -->
-            <div class="row overflow-auto " style="height: 450px">
-
-                <div class="col-4 border border-secondary d-flex flex-column justify-content-center">
-                    <img src="../images/svg/menu/food/food01.svg" class="w-75 align-self-center" alt="">
-                    <div class="h4 text-center text-dark">
-                        Nui xào bò
-                    </div>
-                    <div class="d-flex flex-row justify-content-between">
-                        <div class="h6 text-secondary">Giá: 30.000 đ</div>
-                        <div class="h6 text-primary">Còn 1000</div>
-                    </div>
+            <div class="row overflow-auto" style="height: 500px">
+                <div class="col-md-6 p-0 m-0 d-flex flex-column justify-content-center align-items-center">
+                    <img src="../images/png/profile.png" class="img" style="width: 50%; height: auto;" alt="profile">
+                    <a href="#" class="btn text-white border-secondary" style="padding: 0.75rem 2.5rem; margin-top: 1rem; background: #00FFE0;">Đổi avatar</a>
                 </div>
 
-                <div class="col-4 border border-secondary d-flex flex-column justify-content-center">
-                    <img src="../images/svg/menu/food/food02.svg" class="w-75 align-self-center" alt="">
-                    <div class="h4 text-center text-dark">
-                        Mỳ Ý
-                    </div>
-                    <div class="d-flex flex-row justify-content-between">
-                        <div class="h6 text-secondary">Giá: 30.000 đ</div>
-                        <div class="h6 text-primary">Còn 1234</div>
-                    </div>
-                </div>
 
-                <div class="col-4 border border-secondary d-flex flex-column justify-content-center">
-                    <img src="../images/svg/menu/food/food03.svg" class="w-75 align-self-center" alt="">
-                    <div class="h4 text-center text-dark">
-                        Bún bò
-                    </div>
-                    <div class="d-flex flex-row justify-content-between">
-                        <div class="h6 text-secondary">Giá: 30.000 đ</div>
-                        <div class="h6 text-primary">Còn 645</div>
-                    </div>
-                </div>
+                <div class="col-md-6 d-flex justify-content-center align-items-center">
 
-                <div class="col-4 border border-secondary d-flex flex-column justify-content-center">
-                    <img src="../images/svg/menu/food/food04.svg" class="w-75 align-self-center" alt="">
-                    <div class="h4 text-center text-dark">
-                        Hủ tiếu
-                    </div>
-                    <div class="d-flex flex-row justify-content-between">
-                        <div class="h6 text-secondary">Giá: 30.000 đ</div>
-                        <div class="h6 text-primary">Còn 466</div>
-                    </div>
-                </div>
+                    <form action="" method="post" class="w-75">
+                        <div class="row h2 justify-content-center " style="color: #FD0000">Thông tin cá nhân</div>
 
-                <div class="col-4 border border-secondary d-flex flex-column justify-content-center">
-                    <img src="../images/svg/menu/food/food05.svg" class="w-75 align-self-center" alt="">
-                    <div class="h4 text-center text-dark">
-                        Cơm trưa
-                    </div>
-                    <div class="d-flex flex-row justify-content-between">
-                        <div class="h6 text-secondary">Giá: 30.000 đ</div>
-                        <div class="h6 text-primary">Còn 777</div>
-                    </div>
-                </div>
+                        <!-- Họ tên input -->
+                        <div class="row my-2 form-outline d-flex align-items-center">
+                            <label class="col form-label" for="">Họ và tên:</label>
+                            <input type="text" id="" class="col form-control" value="<?php echo $row['HOTEN']?>" required/>
+                        </div>
 
-                <div class="col-4 border border-secondary d-flex flex-column justify-content-center">
-                    <img src="../images/svg/menu/food/food06.svg" class="w-75 align-self-center" alt="">
-                    <div class="h4 text-center text-dark">
-                        Bánh mì
-                    </div>
-                    <div class="d-flex flex-row justify-content-between">
-                        <div class="h6 text-secondary">Giá: 15.000 đ</div>
-                        <div class="h6 text-primary">Còn 1432</div>
-                    </div>
-                </div>
 
+                        <!-- Username input -->
+                        <div class="row my-3 ">
+                            <div class="col">Tên đăng nhập:</div>
+                            <div class="col h6"><?php echo $row['USERNAME'] ?></div>
+                        </div>
+
+
+                        <!-- Email input -->
+                        <div class="row my-2 form-outline d-flex align-items-center ">
+                            <label class="col form-label" for="">Email:</label>
+                            <input type="email" id="" class="col form-control" value="<?php echo $row['EMAIL']?>" required/>
+                        </div>
+
+
+                        <!-- Phonenumber input -->
+                        <div class="row my-2 form-outline d-flex align-items-center">
+                            <label class="col form-label" for="">Số điện thoại:</label>
+                            <input type="tel" id="" class="col form-control" value="<?php echo $row['SDT']?>" required/>
+                        </div>
+
+                        <!-- Role input -->
+                        <div class="row my-3 ">
+                            <div class="col">Chức vụ:</div>
+                            <div class="col h6"><?php echo $row['ROLE']?></div>
+                        </div>
+
+                        <!-- Gender input -->
+                        <div class="row my-2 align-items-center ">
+
+                            <label class="col-6 form-check-label" for="">Giới tính:</label>
+
+                            <div class="col form-outline">
+                                <input class="form-check-input" type="radio" name="gender" id="gender1" value="Nam" checked>
+                                <label class="form-check-label" for="gender1">Nam</label>
+                            </div>
+                            <div class="col form-outline">
+                                <input class="form-check-input" type="radio" name="gender" id="gender2" value="Nữ">
+                                <label class="form-check-label" for="gender2">Nữ</label>
+                            </div>
+<!--
+                            <div class="col form-outline">
+                                <input type="checkbox" id="" class="col form-check-input" checked />
+                                <label class="form-check-label me-3" for="">Nam</label>
+
+                                <input type="checkbox" id="" class="col form-check-input" />
+                                <label class="form-check-label" for="">Nữ</label>
+                            </div>
+-->
+                        </div>
+
+                        <!-- Date input -->
+                        <div class="row my-2 form-outline d-flex align-items-center ">
+                            <label class="col form-label" for="">Ngày sinh:</label>
+                            <input type="date" id="" class="col form-control" value="<?php echo $row['NGAYSINH']?>" required/>
+                        </div>
+
+                        <!-- Change Profile -->
+                        <div class="text-center my-2 ">
+                            <button type="submit" class="btn text-white"
+                                style="border-radius: 8rem; padding: 0.75rem 2.5rem; background: #CA9FC8;">Lưu</button>
+                        </div>
+
+                    </form>
+                </div>
             </div>
         </div>
 

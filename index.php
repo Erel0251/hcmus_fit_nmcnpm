@@ -36,7 +36,7 @@
 
                 <div class="col-md-6 d-flex align-items-center justify-content-center">
 
-                    <form action="./login.php" method="post" class="d-flex flex-column justify-content-around h-75" style="width: 80%;">
+                    <form action="./Control/login.php" method="post" class="d-flex flex-column justify-content-around h-75" style="width: 80%;">
                         <!-- Title -->
                         <div class="text-center h1 " style="color: #ED00F2">Đăng nhập</div>
 

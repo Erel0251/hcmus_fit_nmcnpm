@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "./database/db_connect.php";
+include "../Model/db_connect.php";
 
 if (isset($_POST['username']) && isset($_POST['password'])) {
     $username = $_POST['username'];
@@ -14,15 +14,16 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     if ($query->rowCount() == 1){
         $row = $query->fetch();
         $_SESSION['username'] = $row['USERNAME'];
+        $_SESSION['fullname'] = $row['HOTEN'];
         $_SESSION['role'] = $row['ROLE'];
-        header("Location: ./home/home.php");
+        header("Location: ../View/home.php");
         exit();
     } else {
-        header("Location: ./index.php?Error=Incorrect username or password");
+        header("Location: ../index.php?Error=Incorrect username or password");
         exit();
     }
 } else {
-    header("Location: ./index.php");
+    header("Location: ../index.php");
     exit();
 }
 ?>

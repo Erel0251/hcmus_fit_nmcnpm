@@ -33,7 +33,7 @@
 
                 <div class="col-md-6 d-flex align-items-center justify-content-center">
 
-                    <form action="signup.php" method="post" id="register" class="d-flex flex-column justify-content-around h-100" style="width: 80%;">
+                    <form action="./Control/signup.php" method="post" id="register" class="d-flex flex-column justify-content-around h-100" style="width: 80%;">
                         <!-- Title -->
                         <div class="text-center h1 " style="color: #ED00F2">Đăng ký</div>
 
@@ -54,14 +54,14 @@
                         <!-- Họ tên input -->
                         <div class="form-outline ">
                             <label class="form-label" for="fullname">Họ và tên</label>
-                            <input type="text" id="fullname" name="fullname" class="form-control" placeholder="Username" required/>
+                            <input type="text" id="fullname" name="fullname" class="form-control" placeholder="Full name" required/>
                         </div>
 
 
                         <!-- Username input -->
                         <div class="form-outline ">
                             <label class="form-label" for="username">Tên đăng nhập (MSSV/ Mã CBNV-GV)</label>
-                            <input type="text" id="username" name="username" class="form-control" value="20120485" required/>
+                            <input type="text" id="username" name="username" class="form-control" placeholder="Username" required/>
                         </div>
 
 
@@ -88,14 +88,14 @@
                         <!-- Email input -->
                         <div class="form-outline ">
                             <label class="form-label" for="email">Email</label>
-                            <input type="email" id="email" name="email" class="form-control" value="20120485@gmail.com" required/>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Email" required/>
                         </div>
 
 
                         <!-- Phonenumber input -->
                         <div class="form-outline ">
                             <label class="form-label" for="sdt">Số điện thoại</label>
-                            <input type="tel" id="sdt" name="sdt" class="form-control" value="0123456789" required/>
+                            <input type="tel" id="sdt" name="sdt" class="form-control" placeholder="Phone number" required/>
                         </div>
 
 
@@ -103,7 +103,7 @@
                         <div class="form-outline ">
                             <label class="form-label" for="password">Mật khẩu</label>
                             <div class="input-group">
-                                <input type="password" id="password" name="password" class="form-control" value="admin" required/>
+                                <input type="password" id="password" name="password" class="form-control" placeholder="Password" required/>
                                 <button class="btn btn-outline-secondary" type="button" id="button-addon2"><img src="./images/png/icons/002-hide.png" alt=""></button>
                             </div>
                         </div>
@@ -112,7 +112,7 @@
                         <div class="form-outline ">
                             <label class="form-label" for="repassword">Nhập lại mật khẩu</label>
                             <div class="input-group">
-                                <input type="password" id="repassword" name="repassword" class="form-control" required/>
+                                <input type="password" id="repassword" name="repassword" class="form-control" placeholder="Re-enter Password" required/>
                                 <button class="btn btn-outline-secondary" type="button" id="button-addon2"><img src="./images/png/icons/002-hide.png" alt=""></button>
                             </div>
                         </div>

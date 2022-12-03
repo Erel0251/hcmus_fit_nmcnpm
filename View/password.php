@@ -197,3 +197,7 @@
 </body>
 
 </html>
+
+<?php
+$sql = "UPDATE `nguoi_dung` SET `HOTEN` = 'mr. somebody' WHERE `nguoi_dung`.`USERNAME` = 'admin'";
+?>
