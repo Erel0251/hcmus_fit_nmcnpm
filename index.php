@@ -14,7 +14,8 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- ========== Bootstrap     ========== -->
+    <!-- ========== Javascript   ========== -->
+    <script src="./script.js"></script>
 
     <title>Quản lý căn tin</title>
 </head>
@@ -58,8 +59,8 @@
                             <label class="form-label" for="password">Mật khẩu</label>
                             <div class="input-group">
                                 <input type="password" id="password" name="password" class="form-control" placeholder="Enter password" required/>
-                                <button class="btn btn-outline-secondary" type="button" id="button-addon"><img
-                                        src="./images/png/icons/002-hide.png" alt=""></button>
+                                <button class="btn btn-outline-secondary" type="button" onclick="myFunction('password', 'button')"><img
+                                        src="./images/png/icons/002-hide.png" id="button" alt=""></button>
                             </div>
 
                         </div>

@@ -131,13 +131,28 @@ $row = $query->fetch();
 
                 <div class="col-md-6 d-flex justify-content-center align-items-center">
 
-                    <form action="" method="post" class="w-75">
+                    <form action="../Control/update-profile.php" method="post" class="w-75">
                         <div class="row h2 justify-content-center " style="color: #FD0000">Thông tin cá nhân</div>
+
+                        <!-- Error log -->
+                        <?php if (isset($_GET['Error'])) { ?>
+                            <div class="text-left alert alert-danger p-2">
+                            <?php echo $_GET['Error']; ?></div>
+                        
+                        <?php } else?>
+
+                        <!-- Success log -->
+                        <?php if (isset($_GET['Success'])) { ?>
+                            <div class="text-left alert alert-success p-2">
+                            <?php echo $_GET['Success']; ?></div>
+                        
+                        <?php }?>
+
 
                         <!-- Họ tên input -->
                         <div class="row my-2 form-outline d-flex align-items-center">
-                            <label class="col form-label" for="">Họ và tên:</label>
-                            <input type="text" id="" class="col form-control" value="<?php echo $row['HOTEN']?>" required/>
+                            <label class="col form-label" for="fullname">Họ và tên:</label>
+                            <input type="text" id="fullname" name="fullname" class="col form-control" value="<?php echo $row['HOTEN']?>" required/>
                         </div>
 
 
@@ -150,15 +165,15 @@ $row = $query->fetch();
 
                         <!-- Email input -->
                         <div class="row my-2 form-outline d-flex align-items-center ">
-                            <label class="col form-label" for="">Email:</label>
-                            <input type="email" id="" class="col form-control" value="<?php echo $row['EMAIL']?>" required/>
+                            <label class="col form-label" for="email">Email:</label>
+                            <input type="email" id="email" name="email" class="col form-control" value="<?php echo $row['EMAIL']?>" required/>
                         </div>
 
 
                         <!-- Phonenumber input -->
                         <div class="row my-2 form-outline d-flex align-items-center">
-                            <label class="col form-label" for="">Số điện thoại:</label>
-                            <input type="tel" id="" class="col form-control" value="<?php echo $row['SDT']?>" required/>
+                            <label class="col form-label" for="sdt">Số điện thoại:</label>
+                            <input type="tel" id="sdt" name="sdt" class="col form-control" value="<?php echo $row['SDT']?>" required/>
                         </div>
 
                         <!-- Role input -->
@@ -173,11 +188,11 @@ $row = $query->fetch();
                             <label class="col-6 form-check-label" for="">Giới tính:</label>
 
                             <div class="col form-outline">
-                                <input class="form-check-input" type="radio" name="gender" id="gender1" value="Nam" checked>
+                                <input class="form-check-input" type="radio" name="gender" id="gender1" value="Nam" <?php if ($row['GIOITINH'] == 'Nam') echo 'checked' ?> >
                                 <label class="form-check-label" for="gender1">Nam</label>
                             </div>
                             <div class="col form-outline">
-                                <input class="form-check-input" type="radio" name="gender" id="gender2" value="Nữ">
+                                <input class="form-check-input" type="radio" name="gender" id="gender2" value="Nữ" <?php if ($row['GIOITINH'] == 'Nữ') echo 'checked' ?>>
                                 <label class="form-check-label" for="gender2">Nữ</label>
                             </div>
 <!--
@@ -193,8 +208,8 @@ $row = $query->fetch();
 
                         <!-- Date input -->
                         <div class="row my-2 form-outline d-flex align-items-center ">
-                            <label class="col form-label" for="">Ngày sinh:</label>
-                            <input type="date" id="" class="col form-control" value="<?php echo $row['NGAYSINH']?>" required/>
+                            <label class="col form-label" for="date">Ngày sinh:</label>
+                            <input type="date" id="date" name="date" class="col form-control" value="<?php echo $row['NGAYSINH']?>" required/>
                         </div>
 
                         <!-- Change Profile -->

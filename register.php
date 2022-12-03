@@ -14,7 +14,8 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- ========== Bootstrap     ========== -->
+    <!-- ========== Javascript   ========== -->
+    <script src="./script.js"></script>
 
     <title>Quản lý căn tin</title>
 </head>
@@ -104,7 +105,7 @@
                             <label class="form-label" for="password">Mật khẩu</label>
                             <div class="input-group">
                                 <input type="password" id="password" name="password" class="form-control" placeholder="Password" required/>
-                                <button class="btn btn-outline-secondary" type="button" id="button-addon2"><img src="./images/png/icons/002-hide.png" alt=""></button>
+                                <button class="btn btn-outline-secondary" onclick="myFunction('password', 'button1')" type="button"><img src="./images/png/icons/002-hide.png" id="button1" alt=""></button>
                             </div>
                         </div>
 
@@ -113,7 +114,7 @@
                             <label class="form-label" for="repassword">Nhập lại mật khẩu</label>
                             <div class="input-group">
                                 <input type="password" id="repassword" name="repassword" class="form-control" placeholder="Re-enter Password" required/>
-                                <button class="btn btn-outline-secondary" type="button" id="button-addon2"><img src="./images/png/icons/002-hide.png" alt=""></button>
+                                <button class="btn btn-outline-secondary" onclick="myFunction('repassword', 'button2')" type="button"><img src="./images/png/icons/002-hide.png" id="button2" alt=""></button>
                             </div>
                         </div>
 
