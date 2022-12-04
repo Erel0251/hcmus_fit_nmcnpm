@@ -83,12 +83,6 @@
                             <p class="small fw-bold mt-2 pt-1 mb-0">Chưa có tài khoản? <a href="./register.php"
                                     class="link-primary">Đăng ký</a></p>
                         </div>
-
-                        <!-- Test/ Footer-->
-                        <div class="row d-flex justify-content-between">
-                            <div class="col text-center"><a href="./admin/home.php" class="link-dark">Test Quản lý</a></div>
-                            <div class="col text-center"><a href="./cashier/home.php" class="link-dark">Test Thu ngân</a></div>
-                        </div>
                     </form>
                 </div>
 
