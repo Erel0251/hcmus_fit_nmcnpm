@@ -19,4 +19,3 @@ $sql = "UPDATE `nguoi_dung` SET `HOTEN` = '$fullname',
 $query = $conn->query($sql);
 header("Location: ../View/profile.php?Success=Update profile successfully");
 exit();    
-    

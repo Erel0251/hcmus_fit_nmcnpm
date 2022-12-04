@@ -5,7 +5,7 @@ include "../Model/db_connect.php";
 if (isset($_POST['username']) && isset($_POST['password'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
-
+    // PDO
     $sql = "SELECT * FROM `nguoi_dung` WHERE `USERNAME` LIKE '$username' AND `PASSWORD` LIKE '$password'";
 
     $query = $conn->query($sql);
