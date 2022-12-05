@@ -7,7 +7,7 @@ $sql = "SELECT * FROM `nguoi_dung` WHERE `USERNAME` LIKE '$username'";
 $query = $conn->query($sql);
 $query->setFetchMode(PDO::FETCH_ASSOC);
 $row = $query->fetch();
-$imagepath = $row['IMAGE'] ?: '../images/png/profile.png';
+$imagepath = $row['IMAGE'] ?? '../images/png/profile.png';
 
 ?>
 
@@ -45,9 +45,6 @@ $imagepath = $row['IMAGE'] ?: '../images/png/profile.png';
                     <img src="<?php echo $imagepath ?>" class="img rounded" style="width: 300px; height: auto;" alt="profile">
                     <div class="row mt-3 align-items-center">
                     <input class="col" type="file" name="image" accept="image/*"/>
-                    <!--
-                    <a href="#" class="col-4 btn text-white border-secondary" style="padding: 0.75rem 2.5rem; background: #00FFE0;">Đổi avatar</a>
--->
                     </div>
                 </div>
 

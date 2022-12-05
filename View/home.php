@@ -1,5 +1,10 @@
 <?php
 session_start();
+include "../Model/db_connect.php";
+$sql = "SELECT * FROM `mat_hang` WHERE `LOAIHANG` LIKE 'Đồ ăn'";
+
+$query = $conn->query($sql);
+$query->setFetchMode(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -45,73 +50,18 @@ session_start();
 
             <!-- Body menu -->
             <div class="row overflow-auto " style="height: 450px">
-
+                <?php while ($row = $query->fetch()) { ?>
                 <div class="col-4 border border-secondary d-flex flex-column justify-content-center">
-                    <img src="../images/svg/menu/food/food01.svg" class="w-75 align-self-center" alt="">
+                    <img src="<?php echo $row['IMAGE'] ?>" class="align-self-center" style="width: 350px; height: 200px;" alt="">
                     <div class="h4 text-center text-dark">
-                        Nui xào bò
+                    <?php echo $row['TENHANG'] ?>
                     </div>
                     <div class="d-flex flex-row justify-content-between">
-                        <div class="h6 text-secondary">Giá: 30.000 đ</div>
+                        <div class="h6 text-secondary">Giá: <?php echo number_format($row['DONGIA']) . "đ" ?></div>
                         <div class="h6 text-primary">Còn 1000</div>
                     </div>
                 </div>
-
-                <div class="col-4 border border-secondary d-flex flex-column justify-content-center">
-                    <img src="../images/svg/menu/food/food02.svg" class="w-75 align-self-center" alt="">
-                    <div class="h4 text-center text-dark">
-                        Mỳ Ý
-                    </div>
-                    <div class="d-flex flex-row justify-content-between">
-                        <div class="h6 text-secondary">Giá: 30.000 đ</div>
-                        <div class="h6 text-primary">Còn 1234</div>
-                    </div>
-                </div>
-
-                <div class="col-4 border border-secondary d-flex flex-column justify-content-center">
-                    <img src="../images/svg/menu/food/food03.svg" class="w-75 align-self-center" alt="">
-                    <div class="h4 text-center text-dark">
-                        Bún bò
-                    </div>
-                    <div class="d-flex flex-row justify-content-between">
-                        <div class="h6 text-secondary">Giá: 30.000 đ</div>
-                        <div class="h6 text-primary">Còn 645</div>
-                    </div>
-                </div>
-
-                <div class="col-4 border border-secondary d-flex flex-column justify-content-center">
-                    <img src="../images/svg/menu/food/food04.svg" class="w-75 align-self-center" alt="">
-                    <div class="h4 text-center text-dark">
-                        Hủ tiếu
-                    </div>
-                    <div class="d-flex flex-row justify-content-between">
-                        <div class="h6 text-secondary">Giá: 30.000 đ</div>
-                        <div class="h6 text-primary">Còn 466</div>
-                    </div>
-                </div>
-
-                <div class="col-4 border border-secondary d-flex flex-column justify-content-center">
-                    <img src="../images/svg/menu/food/food05.svg" class="w-75 align-self-center" alt="">
-                    <div class="h4 text-center text-dark">
-                        Cơm trưa
-                    </div>
-                    <div class="d-flex flex-row justify-content-between">
-                        <div class="h6 text-secondary">Giá: 30.000 đ</div>
-                        <div class="h6 text-primary">Còn 777</div>
-                    </div>
-                </div>
-
-                <div class="col-4 border border-secondary d-flex flex-column justify-content-center">
-                    <img src="../images/svg/menu/food/food06.svg" class="w-75 align-self-center" alt="">
-                    <div class="h4 text-center text-dark">
-                        Bánh mì
-                    </div>
-                    <div class="d-flex flex-row justify-content-between">
-                        <div class="h6 text-secondary">Giá: 15.000 đ</div>
-                        <div class="h6 text-primary">Còn 1432</div>
-                    </div>
-                </div>
-
+                <?php } ?>
             </div>
         </div>
 

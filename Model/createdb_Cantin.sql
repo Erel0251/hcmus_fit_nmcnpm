@@ -30,6 +30,7 @@ CREATE TABLE IF NOT EXISTS NGUOI_DUNG
   USERNAME    varchar(20),
   PASSWORD    varchar(20) NOT NULL,
   ROLE        varchar(11) NOT NULL,
+  IMAGE       text,
   HOTEN       varchar(30),
   GIOITINH    char(3),
   SDT         varchar(11),
@@ -60,6 +61,7 @@ CREATE TABLE IF NOT EXISTS MAT_HANG
 (
   MAHANG   char(5),
   TENHANG  varchar(20),
+  IMAGE    text,
   LOAIHANG varchar(10),
   DONGIA   int,
   primary key (MAHANG)
@@ -134,31 +136,31 @@ FOREIGN KEY (MAPHIEUNHAP) REFERENCES PHIEU_NHAP_HANG(MAPHIEUNHAP);
 -- -----------------------------------------------------
 -- Insert Data
 -- -----------------------------------------------------
-INSERT INTO `nguoi_dung` (`USERNAME`, `PASSWORD`, `ROLE`, `HOTEN`, `GIOITINH`, `SDT`, `NGAYSINH`, `EMAIL`) VALUES ('20120485', 'abc123456', 'Khách hàng', 'Lê Văn Hùng', 'Nam', '0123456789', '2002-12-02', '20120485@yahoo.com');
-INSERT INTO `nguoi_dung` (`USERNAME`, `PASSWORD`, `ROLE`, `HOTEN`, `GIOITINH`, `SDT`, `NGAYSINH`, `EMAIL`) VALUES ('20120244', 'abc123456', 'Khách hàng', 'Hoàng Tuấn Anh', 'Nam', '0123653789', '2002-03-04', '20120244@yahoo.com');
-INSERT INTO `nguoi_dung` (`USERNAME`, `PASSWORD`, `ROLE`, `HOTEN`, `GIOITINH`, `SDT`, `NGAYSINH`, `EMAIL`) VALUES ('20120251', 'abc123456', 'Khách hàng', 'Trần Đức Anh', 'Nam', '0126456049', '2002-10-09', NULL);
-INSERT INTO `nguoi_dung` (`USERNAME`, `PASSWORD`, `ROLE`, `HOTEN`, `GIOITINH`, `SDT`, `NGAYSINH`, `EMAIL`) VALUES ('20120130', 'abc123456', 'Khách hàng', 'Đinh Thị Hoàng Linh', 'Nữ', '0126846789', NULL, '20120130@yahoo.com');
+INSERT INTO `nguoi_dung` (`USERNAME`, `PASSWORD`, `ROLE`, `IMAGE`, `HOTEN`, `GIOITINH`, `SDT`, `NGAYSINH`, `EMAIL`) VALUES ('20120485', 'abc123456', 'Khách hàng', NULL, 'Lê Văn Hùng', 'Nam', '0123456789', '2002-12-02', '20120485@yahoo.com');
+INSERT INTO `nguoi_dung` (`USERNAME`, `PASSWORD`, `ROLE`, `IMAGE`, `HOTEN`, `GIOITINH`, `SDT`, `NGAYSINH`, `EMAIL`) VALUES ('20120244', 'abc123456', 'Khách hàng', NULL, 'Hoàng Tuấn Anh', 'Nam', '0123653789', '2002-03-04', '20120244@yahoo.com');
+INSERT INTO `nguoi_dung` (`USERNAME`, `PASSWORD`, `ROLE`, `IMAGE`, `HOTEN`, `GIOITINH`, `SDT`, `NGAYSINH`, `EMAIL`) VALUES ('20120251', 'abc123456', 'Khách hàng', NULL, 'Trần Đức Anh', 'Nam', '0126456049', '2002-10-09', NULL);
+INSERT INTO `nguoi_dung` (`USERNAME`, `PASSWORD`, `ROLE`, `IMAGE`, `HOTEN`, `GIOITINH`, `SDT`, `NGAYSINH`, `EMAIL`) VALUES ('20120130', 'abc123456', 'Khách hàng', NULL, 'Đinh Thị Hoàng Linh', 'Nữ', '0126846789', NULL, '20120130@yahoo.com');
 -- Giao vien/Nhan vien
-INSERT INTO `nguoi_dung` (`USERNAME`, `PASSWORD`, `ROLE`, `HOTEN`, `GIOITINH`, `SDT`, `NGAYSINH`, `EMAIL`) VALUES ('pldnhat', 'abc123456', 'Khách hàng', 'Phan Lê Duy Nhật', 'Nam', '0875456789', '1986-07-02', 'pldnhat@yahoo.com');
-INSERT INTO `nguoi_dung` (`USERNAME`, `PASSWORD`, `ROLE`, `HOTEN`, `GIOITINH`, `SDT`, `NGAYSINH`, `EMAIL`) VALUES ('tlskiet', 'abc123456', 'Khách hàng', 'Trần Lê Sơn Kiệt', 'Nam', NULL, '1990-12-02', 'tlskiet@yahoo.com');
+INSERT INTO `nguoi_dung` (`USERNAME`, `PASSWORD`, `ROLE`, `IMAGE`, `HOTEN`, `GIOITINH`, `SDT`, `NGAYSINH`, `EMAIL`) VALUES ('pldnhat', 'abc123456', 'Khách hàng', NULL, 'Phan Lê Duy Nhật', 'Nam', '0875456789', '1986-07-02', 'pldnhat@yahoo.com');
+INSERT INTO `nguoi_dung` (`USERNAME`, `PASSWORD`, `ROLE`, `IMAGE`, `HOTEN`, `GIOITINH`, `SDT`, `NGAYSINH`, `EMAIL`) VALUES ('tlskiet', 'abc123456', 'Khách hàng', NULL, 'Trần Lê Sơn Kiệt', 'Nam', NULL, '1990-12-02', 'tlskiet@yahoo.com');
 -- Quan ly / thu ngan
-INSERT INTO `nguoi_dung` (`USERNAME`, `PASSWORD`, `ROLE`, `HOTEN`, `GIOITINH`, `SDT`, `NGAYSINH`, `EMAIL`) VALUES ('nttung', 'abc123456', 'Quản lý', 'Nguyễn Thanh Tùng', 'Nam', '0813456019', '1999-07-02', 'nttung@yahoo.com');
-INSERT INTO `nguoi_dung` (`USERNAME`, `PASSWORD`, `ROLE`, `HOTEN`, `GIOITINH`, `SDT`, `NGAYSINH`, `EMAIL`) VALUES ('tnnam', 'abc123456', 'Quản lý', 'Trần Nhật Nam', 'Nam', '0813452057', '1998-07-02', 'nttung@yahoo.com');
-INSERT INTO `nguoi_dung` (`USERNAME`, `PASSWORD`, `ROLE`, `HOTEN`, `GIOITINH`, `SDT`, `NGAYSINH`, `EMAIL`) VALUES ('lmngoc', 'abc123456', 'Thu ngân', 'Lê Minh Ngọc', 'Nữ', NULL, '2000-10-05', 'lmngoc@yahoo.com');
+INSERT INTO `nguoi_dung` (`USERNAME`, `PASSWORD`, `ROLE`, `IMAGE`, `HOTEN`, `GIOITINH`, `SDT`, `NGAYSINH`, `EMAIL`) VALUES ('nttung', 'abc123456', 'Quản lý', NULL, 'Nguyễn Thanh Tùng', 'Nam', '0813456019', '1999-07-02', 'nttung@yahoo.com');
+INSERT INTO `nguoi_dung` (`USERNAME`, `PASSWORD`, `ROLE`, `IMAGE`, `HOTEN`, `GIOITINH`, `SDT`, `NGAYSINH`, `EMAIL`) VALUES ('tnnam', 'abc123456', 'Quản lý', NULL, 'Trần Nhật Nam', 'Nam', '0813452057', '1998-07-02', 'nttung@yahoo.com');
+INSERT INTO `nguoi_dung` (`USERNAME`, `PASSWORD`, `ROLE`, `IMAGE`, `HOTEN`, `GIOITINH`, `SDT`, `NGAYSINH`, `EMAIL`) VALUES ('lmngoc', 'abc123456', 'Thu ngân', NULL, 'Lê Minh Ngọc', 'Nữ', NULL, '2000-10-05', 'lmngoc@yahoo.com');
 
 	
-INSERT INTO `mat_hang` (`MAHANG`, `TENHANG`, `LOAIHANG`, `DONGIA`) VALUES ('MH001', 'Nui xào bò', 'Đồ ăn', '30000');
-INSERT INTO `mat_hang` (`MAHANG`, `TENHANG`, `LOAIHANG`, `DONGIA`) VALUES ('MH002', 'Mỳ Ý', 'Đồ ăn', '30000');
-INSERT INTO `mat_hang` (`MAHANG`, `TENHANG`, `LOAIHANG`, `DONGIA`) VALUES ('MH003', 'Bún bò', 'Đồ ăn', '30000');
-INSERT INTO `mat_hang` (`MAHANG`, `TENHANG`, `LOAIHANG`, `DONGIA`) VALUES ('MH004', 'Hủ tiếu', 'Đồ ăn', '30000');
-INSERT INTO `mat_hang` (`MAHANG`, `TENHANG`, `LOAIHANG`, `DONGIA`) VALUES ('MH005', 'Cơm trưa', 'Đồ ăn', '30000');
-INSERT INTO `mat_hang` (`MAHANG`, `TENHANG`, `LOAIHANG`, `DONGIA`) VALUES ('MH006', 'Bánh mì', 'Đồ ăn', '15000');
-INSERT INTO `mat_hang` (`MAHANG`, `TENHANG`, `LOAIHANG`, `DONGIA`) VALUES ('MH007', 'Trà ô long Tea Plus', 'Thức uống', '10000');
-INSERT INTO `mat_hang` (`MAHANG`, `TENHANG`, `LOAIHANG`, `DONGIA`) VALUES ('MH008', 'Coca cola', 'Thức uống', '10000');
-INSERT INTO `mat_hang` (`MAHANG`, `TENHANG`, `LOAIHANG`, `DONGIA`) VALUES ('MH009', 'Trà xanh C2', 'Thức uống', '10000');
-INSERT INTO `mat_hang` (`MAHANG`, `TENHANG`, `LOAIHANG`, `DONGIA`) VALUES ('MH010', 'Nước suối', 'Thức uống', '5000');
-INSERT INTO `mat_hang` (`MAHANG`, `TENHANG`, `LOAIHANG`, `DONGIA`) VALUES ('MH011', 'Trà xanh không độ', 'Thức uống', '10000');
-INSERT INTO `mat_hang` (`MAHANG`, `TENHANG`, `LOAIHANG`, `DONGIA`) VALUES ('MH012', 'Sprite', 'Thức uống', '10000');
+INSERT INTO `mat_hang` (`MAHANG`, `IMAGE`, `TENHANG`, `LOAIHANG`, `DONGIA`) VALUES ('MH001', '../images/svg/menu/food/food01.svg', 'Nui xào bò', 'Đồ ăn', '30000');
+INSERT INTO `mat_hang` (`MAHANG`, `IMAGE`, `TENHANG`, `LOAIHANG`, `DONGIA`) VALUES ('MH002', '../images/svg/menu/food/food02.svg', 'Mỳ Ý', 'Đồ ăn', '30000');
+INSERT INTO `mat_hang` (`MAHANG`, `IMAGE`, `TENHANG`, `LOAIHANG`, `DONGIA`) VALUES ('MH003', '../images/svg/menu/food/food03.svg', 'Bún bò', 'Đồ ăn', '30000');
+INSERT INTO `mat_hang` (`MAHANG`, `IMAGE`, `TENHANG`, `LOAIHANG`, `DONGIA`) VALUES ('MH004', '../images/svg/menu/food/food04.svg', 'Hủ tiếu', 'Đồ ăn', '30000');
+INSERT INTO `mat_hang` (`MAHANG`, `IMAGE`, `TENHANG`, `LOAIHANG`, `DONGIA`) VALUES ('MH005', '../images/svg/menu/food/food05.svg', 'Cơm trưa', 'Đồ ăn', '30000');
+INSERT INTO `mat_hang` (`MAHANG`, `IMAGE`, `TENHANG`, `LOAIHANG`, `DONGIA`) VALUES ('MH006', '../images/svg/menu/food/food06.svg', 'Bánh mì', 'Đồ ăn', '15000');
+INSERT INTO `mat_hang` (`MAHANG`, `IMAGE`, `TENHANG`, `LOAIHANG`, `DONGIA`) VALUES ('MH007', '../images/svg/menu/drink/drink01.svg', 'Trà ô long Tea Plus', 'Thức uống', '10000');
+INSERT INTO `mat_hang` (`MAHANG`, `IMAGE`, `TENHANG`, `LOAIHANG`, `DONGIA`) VALUES ('MH008', '../images/svg/menu/drink/drink02.svg', 'Coca cola', 'Thức uống', '10000');
+INSERT INTO `mat_hang` (`MAHANG`, `IMAGE`, `TENHANG`, `LOAIHANG`, `DONGIA`) VALUES ('MH009', '../images/svg/menu/drink/drink03.svg', 'Trà xanh C2', 'Thức uống', '10000');
+INSERT INTO `mat_hang` (`MAHANG`, `IMAGE`, `TENHANG`, `LOAIHANG`, `DONGIA`) VALUES ('MH010', '../images/svg/menu/drink/drink04.svg', 'Nước suối', 'Thức uống', '5000');
+INSERT INTO `mat_hang` (`MAHANG`, `IMAGE`, `TENHANG`, `LOAIHANG`, `DONGIA`) VALUES ('MH011', '../images/svg/menu/drink/drink05.svg', 'Trà xanh không độ', 'Thức uống', '10000');
+INSERT INTO `mat_hang` (`MAHANG`, `IMAGE`, `TENHANG`, `LOAIHANG`, `DONGIA`) VALUES ('MH012', '../images/svg/menu/drink/drink06.svg', 'Sprite', 'Thức uống', '10000');
 
 INSERT INTO `don_hang` (`MADON`, `MANGUOIDUNG`, `THOIGIAN`) VALUES ('MD001', '20120244', '2022-11-01 10:11:10');
 INSERT INTO `don_hang` (`MADON`, `MANGUOIDUNG`, `THOIGIAN`) VALUES ('MD002', '20120485', '2022-11-01 13:12:51');

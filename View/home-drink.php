@@ -1,6 +1,10 @@
 <?php
 session_start();
+include "../Model/db_connect.php";
+$sql = "SELECT * FROM `mat_hang` WHERE `LOAIHANG` LIKE 'Thức uống'";
 
+$query = $conn->query($sql);
+$query->setFetchMode(PDO::FETCH_ASSOC);
 ?>
 
 
@@ -41,79 +45,25 @@ session_start();
                 <a href="#" class="col h3 p-1 rounded-top bg-white text-center text-decoration-none text-danger">
                     Thức uống
                 </a>
-                
+
             </div>
 
 
             <!-- Body menu -->
             <div class="row overflow-auto " style="height: 450px">
 
-                <div class="col-4 border border-secondary d-flex flex-column justify-content-center">
-                    <img src="../images/svg/menu/drink/drink01.svg" class="w-75 align-self-center" alt="">
-                    <div class="h4 text-center text-dark">
-                        Trà ô long Tea plus
+                <?php while ($row = $query->fetch()) { ?>
+                    <div class="col-4 border border-secondary d-flex flex-column justify-content-center">
+                        <img src="<?php echo $row['IMAGE'] ?>" class="align-self-center" style="width: 350px; height: 200px;" alt="">
+                        <div class="h4 text-center text-dark">
+                            <?php echo $row['TENHANG'] ?>
+                        </div>
+                        <div class="d-flex flex-row justify-content-between">
+                            <div class="h6 text-secondary">Giá: <?php echo number_format($row['DONGIA']) . "đ" ?></div>
+                            <div class="h6 text-primary">Còn 1000</div>
+                        </div>
                     </div>
-                    <div class="d-flex flex-row justify-content-between">
-                        <div class="h6 text-secondary">Giá: 10.000 đ</div>
-                        <div class="h6 text-primary">Còn 555</div>
-                    </div>
-                </div>
-
-                <div class="col-4 border border-secondary d-flex flex-column justify-content-center">
-                    <img src="../images/svg/menu/drink/drink02.svg" class="w-75 align-self-center" alt="">
-                    <div class="h4 text-center text-dark">
-                        Coca cola
-                    </div>
-                    <div class="d-flex flex-row justify-content-between">
-                        <div class="h6 text-secondary">Giá: 10.000 đ</div>
-                        <div class="h6 text-primary">Còn 568</div>
-                    </div>
-                </div>
-
-                <div class="col-4 border border-secondary d-flex flex-column justify-content-center">
-                    <img src="../images/svg/menu/drink/drink03.svg" class="w-75 align-self-center" alt="">
-                    <div class="h4 text-center text-dark">
-                        Trà xanh C2
-                    </div>
-                    <div class="d-flex flex-row justify-content-between">
-                        <div class="h6 text-secondary">Giá: 10.000 đ</div>
-                        <div class="h6 text-primary">Còn 764</div>
-                    </div>
-                </div>
-
-                <div class="col-4 border border-secondary d-flex flex-column justify-content-center">
-                    <img src="../images/svg/menu/drink/drink04.svg" class="w-75 align-self-center" alt="">
-                    <div class="h4 text-center text-dark">
-                        Nước suối
-                    </div>
-                    <div class="d-flex flex-row justify-content-between">
-                        <div class="h6 text-secondary">Giá: 5.000 đ</div>
-                        <div class="h6 text-primary">Còn 646</div>
-                    </div>
-                </div>
-
-                <div class="col-4 border border-secondary d-flex flex-column justify-content-center">
-                    <img src="../images/svg/menu/drink/drink05.svg" class="w-75 align-self-center" alt="">
-                    <div class="h4 text-center text-dark">
-                        Trà xanh không độ
-                    </div>
-                    <div class="d-flex flex-row justify-content-between">
-                        <div class="h6 text-secondary">Giá: 10.000 đ</div>
-                        <div class="h6 text-primary">Còn 777</div>
-                    </div>
-                </div>
-
-                <div class="col-4 border border-secondary d-flex flex-column justify-content-center">
-                    <img src="../images/svg/menu/drink/drink06.svg" class="w-75 align-self-center" alt="">
-                    <div class="h4 text-center text-dark">
-                        Sprite
-                    </div>
-                    <div class="d-flex flex-row justify-content-between">
-                        <div class="h6 text-secondary">Giá: 10.000 đ</div>
-                        <div class="h6 text-primary">Còn 442</div>
-                    </div>
-                </div>
-
+                <?php } ?>
             </div>
         </div>
 
