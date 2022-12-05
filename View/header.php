@@ -49,7 +49,7 @@
     <!-- Profile -->
     <div class="dropdown">
         <button class="btn btn-outline-info dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="../images/png/icons/004-user.png" alt="">
+            <img src="<?php echo $_SESSION['image'] ?>" class="img rounded-circle" style="width: 40px; height: auto;" alt="">
         </button>
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
             <li>
@@ -65,15 +65,15 @@
             </li>
             <li><a class="dropdown-item" href="./profile.php">Thông tin cá nhân</a></li>
             <li><a class="dropdown-item" href="./password.php">Đổi mật khẩu</a></li>
-            <?php if ($_SESSION['role'] == 'Quản lý')
-                echo '<li><a class="dropdown-item" href="./menu.php">Quản lý thực đơn</a></li>
-            <li><a class="dropdown-item" href="./inventory.php">Quản lý hàng tồn</a></li>'
-            ?>
-            <?php if ($_SESSION['role'] == 'Thu ngân')
-                echo '<li><a class="dropdown-item" href="./purchase.php">Lập hóa đơn</a></li>
-            <li><a class="dropdown-item" href="./day-revenue.php">Tính doanh thu và hàng tồn theo ngày</a></li>
-            <li><a class="dropdown-item" href="./month-revenue.php">Tính doanh thu tháng</a></li>'
-            ?>
+            <?php if ($_SESSION['role'] == 'Quản lý') { ?>
+                <li><a class="dropdown-item" href="./menu.php">Quản lý thực đơn</a></li>
+                <li><a class="dropdown-item" href="./inventory.php">Quản lý hàng tồn</a></li>
+            <?php } ?>
+            <?php if ($_SESSION['role'] == 'Thu ngân') { ?>
+                <li><a class="dropdown-item" href="./purchase.php">Lập hóa đơn</a></li>
+                <li><a class="dropdown-item" href="./day-revenue.php">Tính doanh thu và hàng tồn theo ngày</a></li>
+                <li><a class="dropdown-item" href="./month-revenue.php">Tính doanh thu tháng</a></li>
+            <?php } ?>
         </ul>
     </div>
 

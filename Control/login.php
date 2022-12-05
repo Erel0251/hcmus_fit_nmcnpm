@@ -17,6 +17,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
             $_SESSION['username'] = $row['USERNAME'];
             $_SESSION['fullname'] = $row['HOTEN'];
             $_SESSION['role'] = $row['ROLE'];
+            $_SESSION['image'] = $row['IMAGE'] ?: '../images/png/icons/004-user.png';
             header("Location: ../View/home.php");
             exit();
         } else {
