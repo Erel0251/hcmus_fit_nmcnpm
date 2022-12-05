@@ -2,36 +2,36 @@
 <div class="d-flex justify-content-between align-items-center">
 
     <!-- Search bar -->
-        <form class="p-1 d-flex flex-row input-group w-25">
-            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false"></button>
-            <ul class="dropdown-menu">
+    <form class="p-1 d-flex flex-row input-group w-25">
+        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false"></button>
+        <ul class="dropdown-menu">
 
 
-                <div class=""><strong>Giá</strong></div>
-                <div class="d-flex justify-content-center">
-                    <input type="number" name="min" min="0" max="50000" placeholder="Từ" class="w-50">
-                    <div class="">-</div>
-                    <input type="number" name="max" min="0" max="50000" placeholder="Đến" class="w-50">
+            <div class=""><strong>Giá</strong></div>
+            <div class="d-flex justify-content-center">
+                <input type="number" name="min" min="0" max="50000" placeholder="Từ" class="w-50" />
+                <div class=""> - </div>
+                <input type="number" name="max" min="0" max="50000" placeholder="Đến" class="w-50" />
+            </div>
+
+            <div><strong>Tình trạng</strong></div>
+            <div class="d-flex justify-content-around">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="Con" id="" />
+                    <label class="form-check-label">Còn</label>
                 </div>
 
-                <div><strong>Tình trạng</strong></div>
-                <div class="d-flex justify-content-around">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="Con" id="">
-                        <label class="form-check-label">Còn</label>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="Het" id="">
-                        <label class="form-check-label">Hết</label>
-                    </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="Het" id="" />
+                    <label class="form-check-label">Hết</label>
                 </div>
+            </div>
 
-            </ul>
-            <input type="text" class="form-control" aria-label="Text input with dropdown button">
+        </ul>
+        <input type="text" class="form-control" aria-label="Text input with dropdown button" />
 
-            <button class="btn btn-outline-secondary" type="submit" id="button-addon"><img src="../images/png/icons/001-loupe.png" alt=""></button>
-        </form>
+        <button class="btn btn-outline-secondary" type="submit" id="button-addon"><img src="../images/png/icons/001-loupe.png" alt=""></button>
+    </form>
 
 
     <!-- Logo -->
