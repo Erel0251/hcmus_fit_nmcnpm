@@ -2,17 +2,16 @@
 <div class="d-flex justify-content-between align-items-center">
 
     <!-- Search bar -->
-    <div class="input-group w-25">
+        <form class="p-1 d-flex flex-row input-group w-25">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false"></button>
+            <ul class="dropdown-menu">
 
-        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false"></button>
-        <ul class="dropdown-menu">
-            <form class="p-1">
 
                 <div class=""><strong>Giá</strong></div>
                 <div class="d-flex justify-content-center">
-                    <input type="number" placeholder="Từ" class="w-50">
+                    <input type="number" name="min" min="0" max="50000" placeholder="Từ" class="w-50">
                     <div class="">-</div>
-                    <input type="number" placeholder="Đến" class="w-50">
+                    <input type="number" name="max" min="0" max="50000" placeholder="Đến" class="w-50">
                 </div>
 
                 <div><strong>Tình trạng</strong></div>
@@ -27,12 +26,12 @@
                         <label class="form-check-label">Hết</label>
                     </div>
                 </div>
-            </form>
-        </ul>
-        <input type="text" class="form-control" aria-label="Text input with dropdown button">
 
-        <button class="btn btn-outline-secondary" type="button" id="button-addon"><img src="../images/png/icons/001-loupe.png" alt=""></button>
-    </div>
+            </ul>
+            <input type="text" class="form-control" aria-label="Text input with dropdown button">
+
+            <button class="btn btn-outline-secondary" type="submit" id="button-addon"><img src="../images/png/icons/001-loupe.png" alt=""></button>
+        </form>
 
 
     <!-- Logo -->
@@ -66,15 +65,15 @@
             </li>
             <li><a class="dropdown-item" href="./profile.php">Thông tin cá nhân</a></li>
             <li><a class="dropdown-item" href="./password.php">Đổi mật khẩu</a></li>
-            <?php if ($_SESSION['role'] == 'Quản lý') 
-            echo '<li><a class="dropdown-item" href="./menu.php">Quản lý thực đơn</a></li>
+            <?php if ($_SESSION['role'] == 'Quản lý')
+                echo '<li><a class="dropdown-item" href="./menu.php">Quản lý thực đơn</a></li>
             <li><a class="dropdown-item" href="./inventory.php">Quản lý hàng tồn</a></li>'
-            ?> 
+            ?>
             <?php if ($_SESSION['role'] == 'Thu ngân')
-            echo '<li><a class="dropdown-item" href="./purchase.php">Lập hóa đơn</a></li>
+                echo '<li><a class="dropdown-item" href="./purchase.php">Lập hóa đơn</a></li>
             <li><a class="dropdown-item" href="./day-revenue.php">Tính doanh thu và hàng tồn theo ngày</a></li>
             <li><a class="dropdown-item" href="./month-revenue.php">Tính doanh thu tháng</a></li>'
-            ?> 
+            ?>
         </ul>
     </div>
 

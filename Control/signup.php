@@ -6,6 +6,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     $fullname = $_POST['fullname'];
     $username = $_POST['username'];
     $password = $_POST['password'];
+    
     $repassword = $_POST['repassword'];
     $gender = $_POST['gender'];
     $role = $_POST['role'];
@@ -26,8 +27,9 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
             header("Location: ../register.php?Error=Wrong confirm password");
             exit();
         } else {
+            $hash = password_hash($password, PASSWORD_BCRYPT);
             $sql = "INSERT INTO `nguoi_dung` (`USERNAME`, `PASSWORD`, `ROLE`, `HOTEN`, `GIOITINH`, `SDT`, `NGAYSINH`, `EMAIL`) 
-                    VALUES ('$username', '$password', '$role', '$fullname', '$gender', '$sdt', '1999-01-01', '$email')";
+                    VALUES ('$username', '$hash', '$role', '$fullname', '$gender', '$sdt', '1999-01-01', '$email')";
 
             $query = $conn->query($sql);
             header("Location: ../register.php?Success=Account created successfully");

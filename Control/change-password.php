@@ -10,12 +10,13 @@ $repassword = $_POST['repassword'];
 $username = $_SESSION['username'];
 
 
-$sql = "SELECT * FROM `nguoi_dung` WHERE `USERNAME` LIKE '$username' AND `PASSWORD` LIKE '$oldpassword'";
+$sql = "SELECT * FROM `nguoi_dung` WHERE `USERNAME` LIKE '$username'";
 
 $query = $conn->query($sql);
 
 $query->setFetchMode(PDO::FETCH_ASSOC);
 if ($query->rowCount() == 1) {
+    $row = $query->fetch();
     if ($oldpassword == $password) {
         header("Location: ../View/password.php?Error=Nothing change in your new password");
 
@@ -23,8 +24,8 @@ if ($query->rowCount() == 1) {
         header("Location: ../View/password.php?Error=Wrong confirm password");
         exit();
 
-    } else {
-        $hash = password_hash($password, PASSWORD_DEFAULT);
+    } else if ($password == $repassword || password_verify($oldpassword, $row['PASSWORD'])){
+        $hash = password_hash($password, PASSWORD_BCRYPT);
         $sql = "UPDATE `nguoi_dung` 
                 SET `PASSWORD` = '$hash'
                 WHERE `nguoi_dung`.`USERNAME` = '$username'";
