@@ -7,7 +7,8 @@ $sql = "SELECT * FROM `nguoi_dung` WHERE `USERNAME` LIKE '$username'";
 $query = $conn->query($sql);
 $query->setFetchMode(PDO::FETCH_ASSOC);
 $row = $query->fetch();
-$imagepath = $row['IMAGE'] ?? '../images/png/profile.png';
+
+$image_path = $_SESSION['image'] == '../images/png/icons/004-user.png' ? '../images/png/profile.png' : $_SESSION['image'];
 
 ?>
 
@@ -42,7 +43,7 @@ $imagepath = $row['IMAGE'] ?? '../images/png/profile.png';
             <!-- Body menu -->
             <form action="../Control/update-profile.php" method="post" enctype="multipart/form-data" class="row overflow-auto" style="height: 500px">
                 <div class="col-md-6 p-0 m-0 d-flex flex-column justify-content-center align-items-center">
-                    <img src="<?php echo $imagepath ?>" class="img rounded" style="width: 300px; height: auto;" alt="profile">
+                    <img src="<?php echo $image_path ?>" class="img rounded" style="width: 300px; height: auto;" alt="profile">
                     <div class="row mt-3 align-items-center">
                     <input class="col" type="file" name="image" accept="image/*"/>
                     </div>
