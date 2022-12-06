@@ -89,14 +89,14 @@
                         <!-- Email input -->
                         <div class="form-outline ">
                             <label class="form-label" for="email">Email</label>
-                            <input type="email" id="email" name="email" class="form-control" placeholder="Email" required />
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Email" />
                         </div>
 
 
                         <!-- Phonenumber input -->
                         <div class="form-outline ">
                             <label class="form-label" for="sdt">Số điện thoại</label>
-                            <input type="tel" id="sdt" name="sdt" class="form-control" placeholder="Phone number" required />
+                            <input type="tel" id="sdt" name="sdt" class="form-control" placeholder="Phone number" />
                         </div>
 
 

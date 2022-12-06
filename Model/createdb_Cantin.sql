@@ -28,7 +28,7 @@ DROP TABLE IF EXISTS NGUOI_DUNG;
 CREATE TABLE IF NOT EXISTS NGUOI_DUNG 
 (
   USERNAME    varchar(20),
-  PASSWORD    varchar(20) NOT NULL,
+  PASSWORD    varchar(60) NOT NULL,
   ROLE        varchar(11) NOT NULL,
   IMAGE       text,
   HOTEN       varchar(30),

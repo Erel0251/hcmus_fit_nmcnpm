@@ -1,8 +1,28 @@
 <?php
 session_start();
 include "../Model/db_connect.php";
-$sql = "SELECT * FROM `mat_hang` WHERE `LOAIHANG` LIKE 'Đồ ăn'";
 
+
+if (isset($_GET['keyword'])) {
+    $min = $_GET['min'] ?: 0;
+    $max = $_GET['max'] ?: 100000;
+    $minmax = " WHERE `DONGIA` >= " . $min . " AND `DONGIA` <= " . $max;
+    $keyword = $_GET['keyword'] ? " AND `TENHANG` LIKE '%" . $_GET['keyword'] . "%'": '';
+    $type = "";
+    if (filter_has_var(INPUT_GET, 'type')){
+        $temp = array_map(fn ($value) =>'\'' . $value . '\'',$_GET['type']);
+        
+        $type = " AND `LOAIHANG` IN (" . implode(", ", $temp) . ")";
+          
+    }
+
+    $search = $minmax . $keyword . $type;
+} else {
+    $search = "";
+}
+
+$sql = "SELECT * FROM `mat_hang`" . $search;
+// WHERE `LOAIHANG` LIKE 'Đồ ăn'
 $query = $conn->query($sql);
 $query->setFetchMode(PDO::FETCH_ASSOC);
 
@@ -37,8 +57,8 @@ $query->setFetchMode(PDO::FETCH_ASSOC);
             <?php include "./header.php" ?>
 
 
-            <!-- Header menu -->
-            <div class="row ">
+            <!-- Header menu 
+                    <div class="row ">
                 <a href="#" class="col h3 p-1 rounded-top bg-white text-center text-decoration-none text-danger">
                     Đồ ăn
                 </a>
@@ -46,10 +66,11 @@ $query->setFetchMode(PDO::FETCH_ASSOC);
                     Thức uống
                 </a>
             </div>
+            -->
 
 
             <!-- Body menu -->
-            <div class="row overflow-auto " style="height: 450px">
+            <div class="row overflow-auto mt-1 border border-black justify-content-center align-items-center" style="height: 500px; border-width: 20px;">
                 <?php while ($row = $query->fetch()) { ?>
                 <div class="col-4 border border-secondary d-flex flex-column justify-content-center">
                     <img src="<?php echo $row['IMAGE'] ?>" class="align-self-center" style="width: 350px; height: 200px;" alt="">
@@ -75,7 +96,7 @@ $query->setFetchMode(PDO::FETCH_ASSOC);
         from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
     <div>Icons made by <a href="https://www.flaticon.com/authors/th-studio" title="th studio">th studio</a> from <a
             href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-
+    
 -->
 
 </body>

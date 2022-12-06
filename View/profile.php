@@ -85,14 +85,14 @@ $imagepath = $row['IMAGE'] ?? '../images/png/profile.png';
                         <!-- Email input -->
                         <div class="row my-2 form-outline d-flex align-items-center ">
                             <label class="col form-label" for="email">Email:</label>
-                            <input type="email" id="email" name="email" class="col form-control" value="<?php echo $row['EMAIL'] ?>" required />
+                            <input type="email" id="email" name="email" class="col form-control" value="<?php echo $row['EMAIL'] ?>" />
                         </div>
 
 
                         <!-- Phonenumber input -->
                         <div class="row my-2 form-outline d-flex align-items-center">
                             <label class="col form-label" for="sdt">Số điện thoại:</label>
-                            <input type="tel" id="sdt" name="sdt" class="col form-control" value="<?php echo $row['SDT'] ?>" required />
+                            <input type="tel" id="sdt" name="sdt" class="col form-control" value="<?php echo $row['SDT'] ?>" />
                         </div>
 
                         <!-- Role input -->

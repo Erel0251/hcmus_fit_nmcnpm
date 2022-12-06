@@ -14,6 +14,13 @@ $username = $_SESSION['username'];
 $image_path = "../images/userImage/" . $_FILES['image']['name'];
 move_uploaded_file($_FILES['image']['tmp_name'], $image_path);
 
+if (!unlink($_SESSION['image'])) {
+    echo ('$_SESSION["image"] cannot be deleted due to an error');
+}
+else {
+    echo ('$_SESSION["image"] has been deleted');
+}
+
 $_SESSION['image'] = '../images/png/icons/004-user.png';
 
 $sql = "UPDATE `nguoi_dung` SET `HOTEN` = '$fullname', 
