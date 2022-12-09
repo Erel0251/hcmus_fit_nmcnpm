@@ -64,6 +64,7 @@ CREATE TABLE IF NOT EXISTS MAT_HANG
   IMAGE    text,
   LOAIHANG varchar(10),
   DONGIA   int,
+  SOLUONG     int,
   primary key (MAHANG)
 );
 
@@ -151,18 +152,18 @@ INSERT INTO `nguoi_dung` (`USERNAME`, `PASSWORD`, `ROLE`, `IMAGE`, `HOTEN`, `GIO
 INSERT INTO `nguoi_dung` (`USERNAME`, `PASSWORD`, `ROLE`, `IMAGE`, `HOTEN`, `GIOITINH`, `SDT`, `NGAYSINH`, `EMAIL`) VALUES ('tnnam', 'abc123456', 'Quản lý', NULL, 'Trần Nhật Nam', 'Nam', '0813452057', '1998-07-02', 'nttung@yahoo.com');
 INSERT INTO `nguoi_dung` (`USERNAME`, `PASSWORD`, `ROLE`, `IMAGE`, `HOTEN`, `GIOITINH`, `SDT`, `NGAYSINH`, `EMAIL`) VALUES ('lmngoc', 'abc123456', 'Thu ngân', NULL, 'Lê Minh Ngọc', 'Nữ', NULL, '2000-10-05', 'lmngoc@yahoo.com');
 
-INSERT INTO `mat_hang` (`MAHANG`, `IMAGE`, `TENHANG`, `LOAIHANG`, `DONGIA`) VALUES ('MH001', '../images/svg/menu/food/food01.svg', 'Nui xào bò', 'Đồ ăn', '30000');
-INSERT INTO `mat_hang` (`MAHANG`, `IMAGE`, `TENHANG`, `LOAIHANG`, `DONGIA`) VALUES ('MH002', '../images/svg/menu/food/food02.svg', 'Mỳ Ý', 'Đồ ăn', '30000');
-INSERT INTO `mat_hang` (`MAHANG`, `IMAGE`, `TENHANG`, `LOAIHANG`, `DONGIA`) VALUES ('MH003', '../images/svg/menu/food/food03.svg', 'Bún bò', 'Đồ ăn', '30000');
-INSERT INTO `mat_hang` (`MAHANG`, `IMAGE`, `TENHANG`, `LOAIHANG`, `DONGIA`) VALUES ('MH004', '../images/svg/menu/food/food04.svg', 'Hủ tiếu', 'Đồ ăn', '30000');
-INSERT INTO `mat_hang` (`MAHANG`, `IMAGE`, `TENHANG`, `LOAIHANG`, `DONGIA`) VALUES ('MH005', '../images/svg/menu/food/food05.svg', 'Cơm trưa', 'Đồ ăn', '30000');
-INSERT INTO `mat_hang` (`MAHANG`, `IMAGE`, `TENHANG`, `LOAIHANG`, `DONGIA`) VALUES ('MH006', '../images/svg/menu/food/food06.svg', 'Bánh mì', 'Đồ ăn', '15000');
-INSERT INTO `mat_hang` (`MAHANG`, `IMAGE`, `TENHANG`, `LOAIHANG`, `DONGIA`) VALUES ('MH007', '../images/svg/menu/drink/drink01.svg', 'Trà ô long Tea Plus', 'Thức uống', '10000');
-INSERT INTO `mat_hang` (`MAHANG`, `IMAGE`, `TENHANG`, `LOAIHANG`, `DONGIA`) VALUES ('MH008', '../images/svg/menu/drink/drink02.svg', 'Coca cola', 'Thức uống', '10000');
-INSERT INTO `mat_hang` (`MAHANG`, `IMAGE`, `TENHANG`, `LOAIHANG`, `DONGIA`) VALUES ('MH009', '../images/svg/menu/drink/drink03.svg', 'Trà xanh C2', 'Thức uống', '10000');
-INSERT INTO `mat_hang` (`MAHANG`, `IMAGE`, `TENHANG`, `LOAIHANG`, `DONGIA`) VALUES ('MH010', '../images/svg/menu/drink/drink04.svg', 'Nước suối', 'Thức uống', '5000');
-INSERT INTO `mat_hang` (`MAHANG`, `IMAGE`, `TENHANG`, `LOAIHANG`, `DONGIA`) VALUES ('MH011', '../images/svg/menu/drink/drink05.svg', 'Trà xanh không độ', 'Thức uống', '10000');
-INSERT INTO `mat_hang` (`MAHANG`, `IMAGE`, `TENHANG`, `LOAIHANG`, `DONGIA`) VALUES ('MH012', '../images/svg/menu/drink/drink06.svg', 'Sprite', 'Thức uống', '10000');
+INSERT INTO `mat_hang` (`MAHANG`, `IMAGE`, `TENHANG`, `LOAIHANG`, `DONGIA`, `SOLUONG`) VALUES ('MH001', '../images/svg/menu/food/food01.svg', 'Nui xào bò', 'Đồ ăn', '30000', 2000);
+INSERT INTO `mat_hang` (`MAHANG`, `IMAGE`, `TENHANG`, `LOAIHANG`, `DONGIA`, `SOLUONG`) VALUES ('MH002', '../images/svg/menu/food/food02.svg', 'Mỳ Ý', 'Đồ ăn', '30000', 2000);
+INSERT INTO `mat_hang` (`MAHANG`, `IMAGE`, `TENHANG`, `LOAIHANG`, `DONGIA`, `SOLUONG`) VALUES ('MH003', '../images/svg/menu/food/food03.svg', 'Bún bò', 'Đồ ăn', '30000', 2000);
+INSERT INTO `mat_hang` (`MAHANG`, `IMAGE`, `TENHANG`, `LOAIHANG`, `DONGIA`, `SOLUONG`) VALUES ('MH004', '../images/svg/menu/food/food04.svg', 'Hủ tiếu', 'Đồ ăn', '30000', 2000);
+INSERT INTO `mat_hang` (`MAHANG`, `IMAGE`, `TENHANG`, `LOAIHANG`, `DONGIA`, `SOLUONG`) VALUES ('MH005', '../images/svg/menu/food/food05.svg', 'Cơm trưa', 'Đồ ăn', '30000', 2000);
+INSERT INTO `mat_hang` (`MAHANG`, `IMAGE`, `TENHANG`, `LOAIHANG`, `DONGIA`, `SOLUONG`) VALUES ('MH006', '../images/svg/menu/food/food06.svg', 'Bánh mì', 'Đồ ăn', '15000', 2000);
+INSERT INTO `mat_hang` (`MAHANG`, `IMAGE`, `TENHANG`, `LOAIHANG`, `DONGIA`, `SOLUONG`) VALUES ('MH007', '../images/svg/menu/drink/drink01.svg', 'Trà ô long Tea Plus', 'Thức uống', '10000', 2000);
+INSERT INTO `mat_hang` (`MAHANG`, `IMAGE`, `TENHANG`, `LOAIHANG`, `DONGIA`, `SOLUONG`) VALUES ('MH008', '../images/svg/menu/drink/drink02.svg', 'Coca cola', 'Thức uống', '10000', 2000);
+INSERT INTO `mat_hang` (`MAHANG`, `IMAGE`, `TENHANG`, `LOAIHANG`, `DONGIA`, `SOLUONG`) VALUES ('MH009', '../images/svg/menu/drink/drink03.svg', 'Trà xanh C2', 'Thức uống', '10000', 2000);
+INSERT INTO `mat_hang` (`MAHANG`, `IMAGE`, `TENHANG`, `LOAIHANG`, `DONGIA`, `SOLUONG`) VALUES ('MH010', '../images/svg/menu/drink/drink04.svg', 'Nước suối', 'Thức uống', '5000', 2000);
+INSERT INTO `mat_hang` (`MAHANG`, `IMAGE`, `TENHANG`, `LOAIHANG`, `DONGIA`, `SOLUONG`) VALUES ('MH011', '../images/svg/menu/drink/drink05.svg', 'Trà xanh không độ', 'Thức uống', '10000', 2000);
+INSERT INTO `mat_hang` (`MAHANG`, `IMAGE`, `TENHANG`, `LOAIHANG`, `DONGIA`, `SOLUONG`) VALUES ('MH012', '../images/svg/menu/drink/drink06.svg', 'Sprite', 'Thức uống', '10000', 2000);
 
 INSERT INTO `don_hang` (`MADON`, `MANGUOIDUNG`, `THOIGIAN`) VALUES ('MD001', 'tlskiet', '2022-11-01 11:28:47');
 INSERT INTO `don_hang` (`MADON`, `MANGUOIDUNG`, `THOIGIAN`) VALUES ('MD002', '20120251', '2022-11-02 14:31:26');

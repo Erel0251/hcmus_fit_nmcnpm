@@ -77,9 +77,9 @@ $image_path = $_SESSION['image'] == '../images/png/icons/004-user.png' ? '../ima
 
 
                         <!-- Username input -->
-                        <div class="row my-3 ">
-                            <div class="col">Tên đăng nhập:</div>
-                            <div class="col h6"><?php echo $row['USERNAME'] ?></div>
+                        <div class="row my-3 form-outline d-flex align-items-center ">
+                            <label class="col form-label" for="username">Tên đăng nhập:</label>
+                            <input type="text" id="username" name="username" class="col form-control-plaintext" value="<?php echo $row['USERNAME'] ?>" readonly/>
                         </div>
 
 

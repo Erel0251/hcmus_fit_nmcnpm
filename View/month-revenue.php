@@ -1,3 +1,29 @@
+<?php
+session_start();
+include "../Model/db_connect.php";
+
+date_default_timezone_set('Asia/Hong_Kong');
+$currentMonth = date('m', time());
+$total = 0;
+
+if (isset($_GET['month'])) {
+    $month = $_GET['month'] ?: $currentMonth;
+} else {
+    $month = $currentMonth;
+}
+
+$days = cal_days_in_month(CAL_GREGORIAN, $month, 2022);
+
+$sql = "SELECT SUM(ct.THANHTIEN) as 'THANHTIEN'
+        FROM don_hang don 
+        JOIN ct_don ct ON don.MADON = ct.MADON 
+        WHERE MONTH(don.THOIGIAN) = '$month'
+        GROUP BY DATE(don.THOIGIAN)";
+
+$query = $conn->query($sql);
+$query->setFetchMode(PDO::FETCH_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,95 +49,7 @@
     <div class="vh-100 d-flex align-items-center justify-content-center bg-secondary">
         <div class="container w-75 bg-light">
 
-            <!-- Header -->
-            <div class="d-flex justify-content-between align-items-center">
-
-                <!-- Search bar -->
-                <div class="input-group w-25">
-
-                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                        data-bs-auto-close="true" aria-expanded="false"></button>
-                    <ul class="dropdown-menu">
-                        <form class="p-1">
-
-                            <div class=""><strong>Giá</strong></div>
-                            <div class="d-flex justify-content-center">
-                                <input type="number" placeholder="Từ" class="w-50">
-                                <div class="">-</div>
-                                <input type="number" placeholder="Đến" class="w-50">
-                            </div>
-
-                            <div><strong>Tình trạng</strong></div>
-                            <div class="d-flex justify-content-around">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="Con" id="">
-                                    <label class="form-check-label">Còn</label>
-                                </div>
-
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="Het" id="">
-                                    <label class="form-check-label">Hết</label>
-                                </div>
-                            </div>
-                        </form>
-                    </ul>
-                    <input type="text" class="form-control" aria-label="Text input with dropdown button">
-
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon"><img
-                            src="../images/png/icons/001-loupe.png" alt=""></button>
-                </div>
-
-
-                <!-- Logo -->
-                <div class="">
-                    <a href="./home.php" class="h2 text-dark text-decoration-none">
-                        <img src="../images/svg/logo.svg" style="display: inline-block; width: 80px; height: auto;"
-                            alt="HCMUS"> HCMUS Canteen
-                    </a>
-                </div>
-
-
-                <!-- Thẻ này để đẩy logo ra giữa, ko để làm gì cả -->
-                <div class="w25"></div>
-
-
-                <!-- Profile -->
-                <div class="dropdown">
-                    <button class="btn btn-outline-info dropdown-toggle" type="button" id="dropdownMenuButton1"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="../images/png/icons/004-user.png" alt="">
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
-                        <li>
-                            <h3 class="dropdown-header text-end">Xin chào <span class="text-primary">Cashier</span>
-                            </h3>
-                        </li>
-                        <li><a class="dropdown-item text-end" href="../index.php">Đăng xuất</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li>
-                            <h4 class="dropdown-header">Bạn là <span class="text-warning">Thu ngân</span></h4>
-                        </li>
-                        <li><a class="dropdown-item" href="./profile.php">Thông tin cá nhân</a></li>
-                        <li><a class="dropdown-item" href="./password.php">Đổi mật khẩu</a></li>
-                        <li><a class="dropdown-item" href="./purchase.php">Lập hóa đơn</a></li>
-                        <li><a class="dropdown-item" href="./day-revenue.php">Tính doanh thu và hàng tồn theo ngày</a></li>
-                        <li><a class="dropdown-item" href="./month-revenue.php">Tính doanh thu tháng</a></li>
-                    </ul>
-                </div>
-
-            </div>
-
-            <!-- Image -->
-            <div class="row position-relative">
-                <img src="../images/svg/background2.svg" class="img p-0" style="filter: brightness(70%)" alt="">
-                <div class="text-white position-absolute" style="left: 25px; top: 10px;">
-                    <div class="h4">Cần 1 bữa ăn ngon bổ rẻ?</div>
-                    <div class="h5">Đừng lo</div>
-                    <div class="h5">Căn tin tự nhiên bao no</div>
-                </div>
-            </div>
+            <?php include "./header.php" ?>
 
 
             <!-- Main -->
@@ -120,8 +58,20 @@
                 <div class="row h2 m-1 justify-content-center " style="color: #FD0000">Doanh thu tháng
                 </div>
 
+                <form action="./month-revenue.php" method="get" class="mb-3 d-flex flex-row align-items-center" style="margin-left: 120px;">
+
+                    <div class="h5">Tháng: </div>
+                    <select class="custom-select mx-2" id="dropdown" name="month">
+                        <?php for ($i = 1; $i <=12; $i++) {?>
+                            <option value="<?php echo $i ?>" <?php if ($i == $month) echo "selected"?>><?php echo $i ?></option>
+                        <?php }?>
+                    </select>
+                    <button type="submit" class="btn btn-primary">Xem</button>
+
+                </form>
+
                 <!-- Body menu -->
-                <div class="row" style="width: 80%; margin: auto;">
+                <div class="row overflow-auto" style="width: 80%; height: 330px; margin: auto;">
                     <table class="table table-bordered table-hover text-center">
                         <thead>
                             <tr>
@@ -136,16 +86,14 @@
                             </tr>
                         </thead>
                         <tbody class="">
+                            <?php for ($i = 0; $i < $month/ 4; $i++ ) {?>
                             <tr>
-                                <td>1</td>
-                                <td>199.001.000</td>
-                                <td>8</td>
-                                <td>199.001.000</td>
-                                <td>15</td>
-                                <td>199.001.000</td>
-                                <td>22</td>
-                                <td>199.001.000</td>
+                                <?php for ($j = 1; $j <=4; $j++) { ?>
+                                <td> <?php echo $j + $i * 4 ?></td>
+                                <td><?php echo ""?></td>
+                                <?php } ?>
                             </tr>
+                            <?php }?>
                             <tr>
                                 <td>2</td>
                                 <td>199.002.000</td>
@@ -212,8 +160,7 @@
 
                 <div class="row justify-content-between align-items-center" style="width: 80%; margin: auto;">
                     <div class="col-4 h5">Tổng cộng: <span style="color: #FF0000;">198.010.000</span></div>
-                    <a href="#" class="col-3 btn text-white"
-                        style="border-radius: 8rem; padding: 0.75rem 2.5rem; background: #80ff80;">Xác nhận</a>
+                    <a href="#" class="col-3 btn text-white" style="border-radius: 8rem; padding: 0.75rem 2.5rem; background: #80ff80;">Xác nhận</a>
                 </div>
 
             </div>

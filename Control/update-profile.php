@@ -17,7 +17,7 @@ if ($_FILES['image']['name'] != "") {
     echo $_FILES['image']['size'];
     echo $_FILES['image']['error'];
     $image_path = "../images/userImage/" . $_FILES['image']['name'];
-    move_uploaded_file($_FILES['image']['tmp_name'], $image_path);
+    copy($_FILES['image']['tmp_name'], $image_path);
 
     if (!unlink($old_image)) {
         echo ('$_SESSION["image"] cannot be deleted due to an error');
