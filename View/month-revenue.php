@@ -14,7 +14,7 @@ if (isset($_GET['month'])) {
 
 $days = cal_days_in_month(CAL_GREGORIAN, $month, 2022);
 
-$sql = "SELECT SUM(ct.THANHTIEN) as 'THANHTIEN'
+$sql = "SELECT DAY(don.THOIGIAN) as 'DAY', SUM(ct.THANHTIEN) as 'THANHTIEN'
         FROM don_hang don 
         JOIN ct_don ct ON don.MADON = ct.MADON 
         WHERE MONTH(don.THOIGIAN) = '$month'
@@ -22,6 +22,13 @@ $sql = "SELECT SUM(ct.THANHTIEN) as 'THANHTIEN'
 
 $query = $conn->query($sql);
 $query->setFetchMode(PDO::FETCH_ASSOC);
+
+$array = array();
+while ($row = $query->fetch()) {
+    $array[$row['DAY']] = $row['THANHTIEN'];
+    
+    $total += $row['THANHTIEN'];
+} 
 ?>
 
 <!DOCTYPE html>
@@ -86,74 +93,14 @@ $query->setFetchMode(PDO::FETCH_ASSOC);
                             </tr>
                         </thead>
                         <tbody class="">
-                            <?php for ($i = 0; $i < $month/ 4; $i++ ) {?>
+                            <?php for ($i = 0; $i < $days/ 4; $i++ ) {?>
                             <tr>
-                                <?php for ($j = 1; $j <=4; $j++) { ?>
-                                <td> <?php echo $j + $i * 4 ?></td>
-                                <td><?php echo ""?></td>
+                                <?php for ($j = 1 + $i * 4; $j <= min(4 + $i * 4, $days); $j++) { ?>
+                                <td> <?php echo $j?></td>
+                                <td><?php echo number_format($array[$j] ?? 0) ?> đ</td>
                                 <?php } ?>
                             </tr>
                             <?php }?>
-                            <tr>
-                                <td>2</td>
-                                <td>199.002.000</td>
-                                <td>8</td>
-                                <td>199.002.000</td>
-                                <td>15</td>
-                                <td>199.002.000</td>
-                                <td>22</td>
-                                <td>199.002.000</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>165.000.000</td>
-                                <td>8</td>
-                                <td>165.000.000</td>
-                                <td>15</td>
-                                <td>165.000.000</td>
-                                <td>22</td>
-                                <td>165.000.000</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>187.000.000</td>
-                                <td>8</td>
-                                <td>187.000.000</td>
-                                <td>15</td>
-                                <td>187.000.000</td>
-                                <td>22</td>
-                                <td>187.000.000</td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>190.000.000</td>
-                                <td>8</td>
-                                <td>190.000.000</td>
-                                <td>15</td>
-                                <td>190.000.000</td>
-                                <td>22</td>
-                                <td>190.000.000</td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>140.000.000</td>
-                                <td>8</td>
-                                <td>140.000.000</td>
-                                <td>15</td>
-                                <td>140.000.000</td>
-                                <td>22</td>
-                                <td>140.000.000</td>
-                            </tr>
-                            <tr>
-                                <td>7</td>
-                                <td>CN Nghỉ </td>
-                                <td>8</td>
-                                <td>CN Nghỉ </td>
-                                <td>15</td>
-                                <td>CN Nghỉ </td>
-                                <td>22</td>
-                                <td>CN Nghỉ </td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>
