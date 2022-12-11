@@ -75,28 +75,31 @@ git clone https://github.com/Erel0251/hcmus_fit_nmcnpm.git
 
 <!-- ROADMAP -->
 ## Roadmap
-- [X] Design Diagram with Draw.io
-- [X] Design Prototype with Figma
-- [X] Only Html/Bootstrap
-- [X] Full Serverside with PHP
-- [X] Create Database with MySQL
-- [ ] Feature
-    - [X] Login/Register with exists account
-    - [X] Change/Update user's information
-    - [X] Show menu
-    - [X] Search items
-    - [X] Show revenue
-    - [ ] Payment
-    - [ ] Update warehouse
-    - [ ] Update menu
-- [X] Write Readme and Report
-- [X] Deploy (local/ hosting)
-- [ ] Improve UI
+- [X] Thiết kế biểu đồ với Draw.io
+- [X] Thiết kế Prototype với Figma
+- [X] Tạo front-end với Html/Bootstrap
+- [X] Chuyển thành back-end kiến trúc Serverside với PHP
+- [X] Tạo cơ sở dữ liệu với MySQL
+- [ ] Tính năng
+    - [X] Đăng nhập/đăng ký sử dụng tài khoản
+    - [X] Cập nhật thông tin tài khoản người dùng
+    - [X] Hiện thực đơn
+    - [X] Tìm kiếm đồ ăn, thức uống
+    - [ ] Hiện chức năng tùy thuộc vào vai trò (Khách hàng, thu ngân, quản lý)
+    - [X] Hiện doanh thu theo ngày/tháng (thu ngân)
+    - [ ] Thanh toán (thu ngân)
+    - [ ] Nhập hàng (quản lý)
+    - [ ] Cập nhật thực đơn (quản lý)
+- [X] Viết readme và báo cáo
+- [X] Triển khai (local/ hosting)
+- [ ] Cải thiện UI
 
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
-Gửi lời cảm ơn trân trọng nhất đến ...
+Gửi lời cảm ơn trân trọng nhất đến Nhà trường, thầy cô giảng dạy môn học này và đến hai thành viên còn lại không đóng góp tí gì vào đồ án này
+
+Nguồn tham khảo:
 
 * [Bootstrap Cheatsheet](https://getbootstrap.com/docs/5.0/examples/cheatsheet/)
 * [Login/Register Form with PHP and MySQL](https://www.youtube.com/watch?v=JDn6OAMnJwQ&list=PL2WFgdVk-usHxUamQzEKTNq36WSdQaXlz)
