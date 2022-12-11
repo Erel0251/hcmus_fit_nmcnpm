@@ -106,7 +106,7 @@ while ($row = $query->fetch()) {
                 </div>
 
                 <div class="row justify-content-between align-items-center" style="width: 80%; margin: auto;">
-                    <div class="col-4 h5">Tổng cộng: <span style="color: #FF0000;">198.010.000</span></div>
+                    <div class="col-4 h5">Tổng cộng: <span style="color: #FF0000;"><?php echo number_format($total) ?> đ</span></div>
                     <a href="#" class="col-3 btn text-white" style="border-radius: 8rem; padding: 0.75rem 2.5rem; background: #80ff80;">Xác nhận</a>
                 </div>
 

@@ -19,7 +19,7 @@ if ($_FILES['image']['name'] != "") {
     $image_path = "../images/userImage/" . $_FILES['image']['name'];
     copy($_FILES['image']['tmp_name'], $image_path);
 
-    if (!unlink($old_image)) {
+    if ($old_image != '../images/png/icons/004-user.png' && !unlink($old_image)) {
         echo ('$_SESSION["image"] cannot be deleted due to an error');
     } else {
         echo ('$_SESSION["image"] has been deleted');
