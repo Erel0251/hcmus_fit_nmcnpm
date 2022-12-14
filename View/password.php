@@ -20,7 +20,7 @@ session_start();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- ========== Javascript   ========== -->
-    <script src="../script.js"></script>
+    <script src="../assets/js/script.js"></script>
 
     <title>Quản lý căn tin</title>
 </head>
@@ -68,7 +68,7 @@ session_start();
                             <label class="form-label" for="oldpassword">Mật khẩu cũ</label>
                             <div class="input-group">
                                 <input type="password" id="oldpassword" name="oldpassword" class="form-control" placeholder="Password" required/>
-                                <button class="btn btn-outline-secondary" onclick="myFunction('oldpassword', 'button1')" type="button"><img
+                                <button class="btn btn-outline-secondary" onclick="passwordButton('oldpassword', 'button1')" type="button"><img
                                         src="../images/png/icons/002-hide.png" id="button1" alt=""></button>
                             </div>
                         </div>
@@ -78,7 +78,7 @@ session_start();
                             <label class="form-label" for="password">Mật khẩu mới</label>
                             <div class="input-group">
                                 <input type="password" id="password" name="password" class="form-control" placeholder="New password" required/>
-                                <button class="btn btn-outline-secondary" onclick="myFunction('password', 'button2')" type="button"><img
+                                <button class="btn btn-outline-secondary" onclick="passwordButton('password', 'button2')" type="button"><img
                                         src="../images/png/icons/002-hide.png" id="button2" alt=""></button>
                             </div>
                         </div>
@@ -88,12 +88,12 @@ session_start();
                             <label class="form-label" for="repassword">Nhập lại mật khẩu</label>
                             <div class="input-group">
                                 <input type="password" id="repassword" name="repassword" class="form-control" placeholder="Confirm new password" required/>
-                                <button class="btn btn-outline-secondary" onclick="myFunction('repassword', 'button3')" type="button"><img
+                                <button class="btn btn-outline-secondary" onclick="passwordButton('repassword', 'button3')" type="button"><img
                                         src="../images/png/icons/002-hide.png" id="button3" alt=""></button>
                             </div>
                         </div>
 
-                        <!-- Login -->
+                        <!-- Submit -->
                         <div class="row my-2 text-center justify-content-sm-between">
                             <!--
                             <button type="button" class="btn btn-lg text-white"

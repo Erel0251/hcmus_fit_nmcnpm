@@ -18,11 +18,12 @@
 <!-- MEMBER -->
 ## Member
 
-| MSSV      | Họ và Tên      |
-|   :---:   |     :---       |
-| 20120251  | Trần Đức Anh   | 
-| 20120485  | Lê Văn Hùng    | 
-
+| MSSV      | Họ và Tên           |
+|   :---:   |   :---              |
+| 20120251  | Trần Đức Anh        | 
+| 20120485  | Lê Văn Hùng         | 
+| 20120244  | Hoàng Tuấn Anh      | 
+| 20120130  | Đinh Thị Hoàng Linh | 
 
 <!-- BUILD WITH -->
 ## Build with
@@ -32,14 +33,14 @@
     - Prototype: Figma
 * Front-end
     - HTML
-    - Bootstrap
+    - CSS / Bootstrap
     - Javascript
 * Back-end
     - PHP
     - MySQL
 * Server
     - Localhost: Apache
-    - Web hosting: Heroku
+    - Web hosting: ~~Heroku~~
 
 
 
@@ -66,7 +67,7 @@ git clone https://github.com/Erel0251/hcmus_fit_nmcnpm.git
 
 <!-- HOSTING -->
 ### Hosting
--  Truy cập [heroku](#)
+-  ~~Truy cập [heroku](#)~~
 
 
 <!-- EXAMPLE -->
@@ -89,7 +90,7 @@ git clone https://github.com/Erel0251/hcmus_fit_nmcnpm.git
     - [X] Hiện doanh thu theo ngày/tháng (thu ngân)
     - [ ] Thanh toán (thu ngân)
     - [ ] Nhập hàng (quản lý)
-    - [ ] Cập nhật thực đơn (quản lý)
+    - [ ] Cập nhật thực đơn (quản lý)A
 - [X] Viết readme và báo cáo
 - [X] Triển khai (local/ hosting)
 - [ ] Cải thiện UI

@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +18,9 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- ========== Bootstrap     ========== -->
+    <!-- ========== CSS and Javascript  ========== -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    
 
     <title>Quản lý căn tin</title>
 </head>
@@ -23,109 +29,53 @@
     <div class="vh-100 d-flex align-items-center justify-content-center bg-secondary">
         <div class="container w-75 bg-light">
 
+
             <!-- Header -->
-            <div class="d-flex justify-content-between align-items-center">
-
-                <!-- Search bar -->
-                <div class="input-group w-25">
-
-                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                        data-bs-auto-close="true" aria-expanded="false"></button>
-                    <ul class="dropdown-menu">
-                        <form class="p-1">
-
-                            <div class=""><strong>Giá</strong></div>
-                            <div class="d-flex justify-content-center">
-                                <input type="number" placeholder="Từ" class="w-50">
-                                <div class="">-</div>
-                                <input type="number" placeholder="Đến" class="w-50">
-                            </div>
-
-                            <div><strong>Tình trạng</strong></div>
-                            <div class="d-flex justify-content-around">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="Con" id="">
-                                    <label class="form-check-label">Còn</label>
-                                </div>
-
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="Het" id="">
-                                    <label class="form-check-label">Hết</label>
-                                </div>
-                            </div>
-                        </form>
-                    </ul>
-                    <input type="text" class="form-control" aria-label="Text input with dropdown button">
-
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon"><img
-                            src="../images/png/icons/001-loupe.png" alt=""></button>
-                </div>
-
-
-                <!-- Logo -->
-                <div class="">
-                    <a href="./home.php" class="h2 text-dark text-decoration-none">
-                        <img src="../images/svg/logo.svg" style="display: inline-block; width: 80px; height: auto;"
-                            alt="HCMUS"> HCMUS Canteen
-                    </a>
-                </div>
-
-
-                <!-- Thẻ này để đẩy logo ra giữa, ko để làm gì cả -->
-                <div class="w25"></div>
-
-
-                <!-- Profile -->
-                <div class="dropdown">
-                    <button class="btn btn-outline-info dropdown-toggle" type="button" id="dropdownMenuButton1"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="../images/png/icons/004-user.png" alt="">
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
-                        <li>
-                            <h3 class="dropdown-header text-end">Xin chào <span class="text-primary">Admin</span>
-                            </h3>
-                        </li>
-                        <li><a class="dropdown-item text-end" href="../index.php">Đăng xuất</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li>
-                            <h4 class="dropdown-header">Bạn là <span class="text-warning">Quản lý</span></h4>
-                        </li>
-                        <li><a class="dropdown-item" href="./profile.php">Thông tin cá nhân</a></li>
-                        <li><a class="dropdown-item" href="./password.php">Đổi mật khẩu</a></li>
-                        <li><a class="dropdown-item" href="./menu.php">Quản lý thực đơn</a></li>
-                        <li><a class="dropdown-item" href="./inventory.php">Quản lý hàng tồn</a></li>
-                    </ul>
-                </div>
-
-            </div>
-
-            <!-- Image -->
-            <div class="row position-relative">
-                <img src="../images/svg/background2.svg" class="img p-0" style="filter: brightness(70%)" alt="">
-                <div class="text-white position-absolute" style="left: 25px; top: 10px;">
-                    <div class="h4">Cần 1 bữa ăn ngon bổ rẻ?</div>
-                    <div class="h5">Đừng lo</div>
-                    <div class="h5">Căn tin tự nhiên bao no</div>
-                </div>
-            </div>
-
-
-            <!-- Header menu -->
-            <div class="row ">
-                <a href="#" class="col h3 p-1 rounded-top bg-white text-center text-decoration-none text-danger">
-                    Đồ ăn
-                </a>
-                <a href="./home-drink.php" class="col h3 p-1 rounded-top bg-secondary text-center text-decoration-none text-dark">
-                    Thức uống
-                </a>
-            </div>
+            <?php include "./header.php" ?>
 
 
             <!-- Body menu -->
-            <div class="row overflow-auto " style="height: 450px">
+            <div class="" style="height: 500px">
+
+                <button data-modal-target="#form-modal" class="btn btn-primary m-3 "> test</button>
+
+                <div class="form-modal container" id="form-modal">
+                    <form action="">
+
+                        <div class="text-center h1 pb-2" style="color: #ED00F2; border-bottom: 1px solid black">HEADER</div>
+
+                        <div class="form-outline ">
+                            <label class="form-label" for="username">Input: </label>
+                            <input type="text" id="username" name="username" class="form-control" placeholder="Enter username" />
+                        </div>
+
+                        <div class="form-outline ">
+                            <label class="form-label" for="username">Input: </label>
+                            <input type="text" id="username" name="username" class="form-control" placeholder="Enter username" />
+                        </div>
+
+                        <div class="form-outline ">
+                            <label class="form-label" for="username">Input: </label>
+                            <input type="text" id="username" name="username" class="form-control" placeholder="Enter username" />
+                        </div>
+
+
+                        <!-- Submit -->
+                        <div class="row my-2 text-center justify-content-sm-between">
+                            <!--
+                            <button type="button" class="btn btn-lg text-white"
+                                style="border-radius: 8rem; padding-left: 2.5rem; padding-right: 2.5rem; background: #CA9FC8;">Đăng
+                                ký</button>
+                            -->
+                            <button data-close-button class="col-4 btn text-white" style="border-radius: 8rem; padding: 0.75rem 2.0rem; background: #9C9C9C;">Hủy</button>
+
+                            <button type="submit" class="col-4 btn text-white" style="border-radius: 8rem; padding: 0.75rem 2.0rem; background: #80FF80;">Xác nhận</button>
+                        </div>
+
+                    </form>
+                </div>
+
+                <div id="overlay"></div>
 
             </div>
         </div>
@@ -142,7 +92,7 @@
             href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 
 -->
-
+<script src="../assets/js/script.js"></script>
 </body>
 
 </html>
