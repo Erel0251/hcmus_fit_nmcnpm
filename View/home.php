@@ -79,7 +79,7 @@ $query->setFetchMode(PDO::FETCH_ASSOC);
                     </div>
                     <div class="d-flex flex-row justify-content-between">
                         <div class="h6 text-secondary">Giá: <?php echo number_format($row['DONGIA']) . "đ" ?></div>
-                        <div class="h6 text-primary">Còn:  <?php echo $row['SOLUONG'] ?></div>
+                        <div class="h6 text-primary">Còn:  <?php echo number_format($row['SOLUONG']) ?></div>
                     </div>
                 </div>
                 <?php } ?>

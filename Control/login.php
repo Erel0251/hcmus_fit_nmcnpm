@@ -25,7 +25,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
             exit();
         }
     } else {
-        header("Location: ../index.php?Error=User not exists");
+        header("Location: ../index.php?Error=User does not exists");
         exit();
     }
 } else {

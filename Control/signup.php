@@ -9,7 +9,6 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     
     $repassword = $_POST['repassword'];
     $gender = $_POST['gender'];
-    $role = $_POST['role'];
     $email = $_POST['email'];
     $sdt = $_POST['sdt'];
 
@@ -29,7 +28,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         } else {
             $hash = password_hash($password, PASSWORD_BCRYPT);
             $sql = "INSERT INTO `nguoi_dung` (`USERNAME`, `PASSWORD`, `ROLE`, `HOTEN`, `GIOITINH`, `SDT`, `NGAYSINH`, `EMAIL`) 
-                    VALUES ('$username', '$hash', '$role', '$fullname', '$gender', '$sdt', '1999-01-01', '$email')";
+                    VALUES ('$username', '$hash', 'Khách hàng', '$fullname', '$gender', '$sdt', '1999-01-01', '$email')";
 
             $query = $conn->query($sql);
             header("Location: ../register.php?Success=Account created successfully");

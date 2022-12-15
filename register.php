@@ -78,11 +78,13 @@
                             </div>
 
                             <!-- Role input -->
+                        <!--
                             <select class="form-select w-50" id="role" name="role" form="register">
                                 <option value="Khách hàng" selected>Khách hàng</option>
                                 <option value="Thu ngân">Thu ngân</option>
                                 <option value="Quản lý">Quản lý</option>
                             </select>
+                        -->
                         </div>
 
 
