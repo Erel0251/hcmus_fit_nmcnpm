@@ -77,7 +77,7 @@ session_start();
                         <div class="row my-2 form-outline ">
                             <label class="form-label" for="password">Mật khẩu mới</label>
                             <div class="input-group">
-                                <input type="password" id="password" name="password" class="form-control" placeholder="New password" required/>
+                                <input type="password" id="password" name="newpassword" class="form-control" placeholder="New password" required/>
                                 <button class="btn btn-outline-secondary" onclick="passwordButton('password', 'button2')" type="button"><img
                                         src="../images/png/icons/002-hide.png" id="button2" alt=""></button>
                             </div>
