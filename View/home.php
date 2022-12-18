@@ -8,7 +8,8 @@ if (isset($_GET['keyword'])) {
     $max = $_GET['max'] ?: 100000;
     $minmax = " WHERE `DONGIA` >= " . $min . " AND `DONGIA` <= " . $max;
     $keyword = $_GET['keyword'] ? " AND `TENHANG` LIKE '%" . $_GET['keyword'] . "%'": '';
-    $type = "";
+    $type = " AND LOAIHANG LIKE ''";
+
     if (filter_has_var(INPUT_GET, 'type')){
         $temp = array_map(fn ($value) =>'\'' . $value . '\'',$_GET['type']);
         
@@ -22,10 +23,9 @@ if (isset($_GET['keyword'])) {
 }
 
 $sql = "SELECT * FROM `mat_hang`" . $search;
-// WHERE `LOAIHANG` LIKE 'Đồ ăn'
 $query = $conn->query($sql);
 $query->setFetchMode(PDO::FETCH_ASSOC);
-
+$count = 0;
 ?>
 
 
@@ -71,7 +71,7 @@ $query->setFetchMode(PDO::FETCH_ASSOC);
 
             <!-- Body menu -->
             <div class="row overflow-auto mt-1 border border-black justify-content-center align-items-center" style="height: 500px; border-width: 20px;">
-                <?php while ($row = $query->fetch()) { ?>
+                <?php while ($row = $query->fetch()) { $count++;?>
                 <div class="col-4 border border-secondary d-flex flex-column justify-content-center">
                     <img src="<?php echo $row['IMAGE'] ?>" class="align-self-center" style="width: 350px; height: 200px;" alt="">
                     <div class="h4 text-center text-dark">
@@ -82,6 +82,11 @@ $query->setFetchMode(PDO::FETCH_ASSOC);
                         <div class="h6 text-primary">Còn:  <?php echo number_format($row['SOLUONG']) ?></div>
                     </div>
                 </div>
+                <?php } ?>
+                <?php if ($count == 0) {?>
+                    <div class="h3 text-center align-itenms-center">
+                        <i> Không tìm thấy mặt hàng bạn cần </i>
+                    </div>
                 <?php } ?>
             </div>
         </div>

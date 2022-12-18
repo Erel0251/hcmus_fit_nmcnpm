@@ -66,8 +66,9 @@
                         </div>
 
 
-                        <div class="d-flex flex-row justify-content-between align-items-center">
+                        <div class="d-flex flex-row justify-content-start align-items-center">
                             <!-- Gender input -->
+                            <div class="me-5">Giới tính: </div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="gender" id="gender1" value="Nam" checked>
                                 <label class="form-check-label" for="gender1">Nam</label>
