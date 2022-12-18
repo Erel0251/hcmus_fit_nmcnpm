@@ -53,16 +53,36 @@
 
 <!-- LOCAL HOST -->
 ### Local host
-1. Tải và sử dụng [XAMPP](https://www.apachefriends.org/download.html)
-2. Bật Apache và Mysql để tạo localhost
-3. Đến thư mục `xampp/htdocs/` và clone repository:
-```
-git clone https://github.com/Erel0251/hcmus_fit_nmcnpm.git
-``` 
+> Hướng dẫn tập trung đến việc cài đặt phần mềm, việc cài đặt XAMPP tùy thuộc vào mỗi hệ điều hành khác nhau,
+> Đồng thời XAMPP là một phần mềm lâu đời cho việc triển khai Localhost, các hướng dẫn trên mạng khá đầy đủ,
+> Mong bạn bỏ qua thiếu sót này
 
-4. Truy cập `http://localhost/phpmyadmin/`
-5. Sử dụng file `/NMCNPM/Model/createddb_Cantin.sql` để thiết lập database
-6. Sử dụng chương trình tại `http://localhost/NMCNPM/`
+1. Tải và sử dụng [XAMPP](https://www.apachefriends.org/download.html)
+![image](https://user-images.githubusercontent.com/72942607/208273459-58d1cbc4-e088-4b2a-8293-d910fba35ab4.png)
+
+2. Sử dụng XAMPP Control Panel, Bật Apache và Mysql để khởi tạo localhost và database
+![image](https://user-images.githubusercontent.com/72942607/208273677-533bd522-a64e-4864-bd52-72fa81418dc1.png)
+
+3. Clone repository
+    1. Với Window
+    - Đến thư mục cài đặt XAMPP (mặc định là `C:\xampp\htdocs`)
+    - Sử dụng terminal, window shell hoặc cmd và clone repository này: 
+    ```
+    git clone https://github.com/Erel0251/hcmus_fit_nmcnpm.git
+    ``` 
+
+    2. Với Linux
+    - Mở Terminal, di chuyển đến thư mục của xampp với lệnh cd
+    ```
+    cd 
+    ```
+
+4. Mở Browser bất kỳ và truy cập đến trang [Localhost](http://localhost/phpmyadmin/)
+5. Sử dụng file `/hcmus_fit_nmcnpm/Model/createddb_Cantin.sql` để thiết lập database
+![image](https://user-images.githubusercontent.com/72942607/208274907-499e9eab-abe2-4813-a508-5c8b8dbaafd0.png)
+
+6. Sử dụng chương trình tại [localhost/hcmus_fit_nmcnpm](http://localhost/hcmus_fit_nmcnpm/)
+![image](https://user-images.githubusercontent.com/72942607/208275072-34d8215e-0ef1-42f3-9e55-ef447aab7030.png)
 
 
 <!-- HOSTING -->
@@ -98,7 +118,7 @@ git clone https://github.com/Erel0251/hcmus_fit_nmcnpm.git
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
-Gửi lời cảm ơn trân trọng nhất đến Nhà trường, thầy cô giảng dạy môn học này và đến hai thành viên còn lại không đóng góp tí gì vào đồ án này
+Gửi lời cảm ơn trân trọng nhất đến Nhà trường, đến thầy cô giảng dạy môn học này.
 
 Nguồn tham khảo:
 
