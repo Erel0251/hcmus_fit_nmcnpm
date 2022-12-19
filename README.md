@@ -7,16 +7,16 @@
 
 <!-- TABLE OF CONTENT -->
 ## Table of content
-- [Member](#member)
-- [Build with](#build-with)
-- [Getting started](#getting-started)
-- [Example](#example)
-- [Roadmap](#roadmap)
-- [Acknowledgments](#acknowledgments)
+- [Thành viên](#thành-viên)
+- [Công nghệ](#công-nghệ)
+- [Cài đặt và sử dụng](#cài-đặt-và-sử-dụng)
+- [Ví dụ](#ví-dụ)
+- [Tiến trình](#tiến-trình)
+- [Tài liệu tham khảo](#tài-liệu-tham-khảo)
 - [Contributing](#contributing)
 
 <!-- MEMBER -->
-## Member
+## Thành viên
 
 | MSSV      | Họ và Tên           |
 |   :---:   |   :---              |
@@ -26,7 +26,7 @@
 | 20120130  | Đinh Thị Hoàng Linh | 
 
 <!-- BUILD WITH -->
-## Build with
+## Công nghệ
 
 * Design
     - Diagram: Draw.io
@@ -42,10 +42,10 @@
     - Localhost: Apache
     - Web hosting: ~~Heroku~~
 
-* ![image](https://user-images.githubusercontent.com/72942607/208275072-34d8215e-0ef1-42f3-9e55-ef447aab7030.png)
+ ![image](https://user-images.githubusercontent.com/72942607/208275072-34d8215e-0ef1-42f3-9e55-ef447aab7030.png)
 
 <!-- GETTING STARTED -->
-## Getting Started
+## Cài đặt và sử dụng
 
 
 <!-- LOCAL HOST -->
@@ -56,11 +56,11 @@
 
     ![xampp](https://user-images.githubusercontent.com/72942607/208273459-58d1cbc4-e088-4b2a-8293-d910fba35ab4.png)
 
-2. Sử dụng câu lệnh `$ sudo /opt/lampp/lampp start` trong CLI hoặc XAMPP Control Panel để bật Apache và Mysql nhằm khởi tạo localhost và database
+2. Nếu tiếp cận bằng CLI, sử dụng câu lệnh `$ sudo /opt/lampp/lampp start` hoặc tiếp cận thông qua GUI, sử dụng XAMPP Control Panel để bật Apache và Mysql nhằm khởi tạo localhost và database
 
     ![xampp control panel](https://user-images.githubusercontent.com/72942607/208273677-533bd522-a64e-4864-bd52-72fa81418dc1.png)
 
-3. Mở Browser và truy cập Localhost để kiểm tra chương trình đã hoạt động chưa
+3. Mở Browser và truy cập [Localhost](http://localhost/dashboard/) để kiểm tra chương trình đã hoạt động chưa
 
     ![image](https://user-images.githubusercontent.com/72942607/208277294-e729edce-f096-41b0-a912-12d830d296a0.png)
 
@@ -101,11 +101,11 @@
 
 
 <!-- EXAMPLE -->
-## Example
+## Ví dụ
 
 
 <!-- ROADMAP -->
-## Roadmap
+## Tiến trình
 - [X] Thiết kế biểu đồ với Draw.io
 - [X] Thiết kế Prototype với Figma
 - [X] Tạo front-end với Html/Bootstrap
@@ -125,13 +125,8 @@
 - [X] Triển khai (local/ hosting)
 - [ ] Cải thiện UI
 
-
 <!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-Gửi lời cảm ơn trân trọng nhất đến Nhà trường, đến thầy cô giảng dạy môn học này.
-
-Nguồn tham khảo:
-
+## Tài liệu tham khảo
 * [Bootstrap Cheatsheet](https://getbootstrap.com/docs/5.0/examples/cheatsheet/)
 * [Login/Register Form with PHP and MySQL](https://www.youtube.com/watch?v=JDn6OAMnJwQ&list=PL2WFgdVk-usHxUamQzEKTNq36WSdQaXlz)
 * [Upload image to Database](https://www.youtube.com/watch?v=onu3w8kqASU)
