@@ -1,5 +1,29 @@
 <?php
 session_start();
+include "../Model/db_connect.php";
+
+if (isset($_GET['keyword'])) {
+    $min = $_GET['min'] ?: 0;
+    $max = $_GET['max'] ?: 100000;
+    $minmax = " WHERE `DONGIA` >= " . $min . " AND `DONGIA` <= " . $max;
+    $keyword = $_GET['keyword'] ? " AND `TENHANG` LIKE '%" . $_GET['keyword'] . "%'": '';
+    $type = "";
+    if (filter_has_var(INPUT_GET, 'type')){
+        $temp = array_map(fn ($value) =>'\'' . $value . '\'',$_GET['type']);
+        
+        $type = " AND `LOAIHANG` IN (" . implode(", ", $temp) . ")";
+          
+    }
+
+    $search = $minmax . $keyword . $type;
+} else {
+    $search = "";
+}
+
+$sql = "SELECT * FROM `mat_hang`" . $search;
+// WHERE `LOAIHANG` LIKE 'Đồ ăn'
+$query = $conn->query($sql);
+$query->setFetchMode(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -32,53 +56,33 @@ session_start();
 
             <!-- Header -->
             <?php include "./header.php" ?>
+           
+            <a  class= "btn btn-primary" href="them.html ">Thêm </a>
 
-
-            <!-- Body menu -->
-            <div class="" style="height: 500px">
-
-                <button data-modal-target="#form-modal" class="btn btn-primary m-3 "> test</button>
-
-                <div class="form-modal container" id="form-modal">
-                    <form action="">
-
-                        <div class="text-center h1 pb-2" style="color: #ED00F2; border-bottom: 1px solid black">HEADER</div>
-
-                        <div class="form-outline ">
-                            <label class="form-label" for="username">Input: </label>
-                            <input type="text" id="username" name="username" class="form-control" placeholder="Enter username" />
+            <div class="row overflow-auto mt-1 border border-black justify-content-center align-items-center" style="height: 500px; border-width: 20px;">
+                <?php while ($row = $query->fetch()) { ?>
+                <div class="col-4 border border-secondary d-flex flex-column justify-content-center">
+                    <img src="<?php echo $row['IMAGE'] ?>" class="align-self-center" style="width: 350px; height: 200px;" alt="">
+                    <div class="h4 text-center text-dark">
+                    <?php echo $row['TENHANG'] ?>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between">
+                        <div class="h6 text-primary">Mã hàng:  <?php echo $row['MAHANG'] ?></div>
+                        <div class="h6 text-secondary">Giá: <?php echo number_format($row['DONGIA']) . "đ" ?></div>
+                        <div class="h6 text-primary">Còn:  <?php echo $row['SOLUONG'] ?></div>
+                        <div>
+                            
+                            <a  href="sua.php?id=<?php echo $row['MAHANG'];?> ">Sửa </a>
+                            <a onclick="return confirm('Bạn có muốn xóa món ăn này không?');" href="xoa.php?id=<?php echo $row['MAHANG'];?> ">Xóa </a>
                         </div>
 
-                        <div class="form-outline ">
-                            <label class="form-label" for="username">Input: </label>
-                            <input type="text" id="username" name="username" class="form-control" placeholder="Enter username" />
-                        </div>
-
-                        <div class="form-outline ">
-                            <label class="form-label" for="username">Input: </label>
-                            <input type="text" id="username" name="username" class="form-control" placeholder="Enter username" />
-                        </div>
-
-
-                        <!-- Submit -->
-                        <div class="row my-2 text-center justify-content-sm-between">
-                            <!--
-                            <button type="button" class="btn btn-lg text-white"
-                                style="border-radius: 8rem; padding-left: 2.5rem; padding-right: 2.5rem; background: #CA9FC8;">Đăng
-                                ký</button>
-                            -->
-                            <button data-close-button class="col-4 btn text-white" style="border-radius: 8rem; padding: 0.75rem 2.0rem; background: #9C9C9C;">Hủy</button>
-
-                            <button type="submit" class="col-4 btn text-white" style="border-radius: 8rem; padding: 0.75rem 2.0rem; background: #80FF80;">Xác nhận</button>
-                        </div>
-
-                    </form>
+                       
+                        
+                    </div>
                 </div>
-
-                <div id="overlay"></div>
-
+                <?php } ?>
             </div>
-        </div>
+           
 
 
 

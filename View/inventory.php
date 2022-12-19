@@ -11,7 +11,7 @@ $sql = "SELECT hang.TENHANG, phieu.NGAYNHAP, ct.SOLUONG, hang.DONGIA, phieu.DIAC
 $query = $conn->query($sql);
 $query->setFetchMode(PDO::FETCH_ASSOC);
 
-$stt = 1;
+$stt = 0;
 
 ?>
 
