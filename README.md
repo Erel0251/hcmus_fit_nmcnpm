@@ -52,9 +52,6 @@
         │   ├── css                 
         │   ├── js
         |   └── images              # Hình ảnh sử dụng trong chương trình
-        |   │   ├── png 
-        |   │   ├── svg 
-        |   │   └── userImage
         ├── Model                   # Folder liên quan đến kết nối đến database 
         ├── View                    # Folder liên quan đến hiện giao diện trên trang web
         ├── Control                 # Folder liên quan đến xử lý form, truy vấn, cập nhật database
