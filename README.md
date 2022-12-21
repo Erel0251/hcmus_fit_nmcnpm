@@ -9,8 +9,8 @@
 ## Table of content
 - [Thành viên](#thành-viên)
 - [Công nghệ](#công-nghệ)
+- [Cây thư mục](#cây-thư-mục)
 - [Cài đặt và sử dụng](#cài-đặt-và-sử-dụng)
-- [Ví dụ](#ví-dụ)
 - [Tiến trình](#tiến-trình)
 - [Tài liệu tham khảo](#tài-liệu-tham-khảo)
 - [Contributing](#contributing)
@@ -43,6 +43,25 @@
     - Web hosting: ~~Heroku~~
 
  ![image](https://user-images.githubusercontent.com/72942607/208275072-34d8215e-0ef1-42f3-9e55-ef447aab7030.png)
+
+<!-- FOLDER STRUCTURE -->
+## Cây thư mục
+
+    hcmus_fit_nmcnpm
+        ├── asset                   # Folder liên quan đến phần front-end
+        │   ├── css                 
+        │   └── js
+        ├── Model                   # Folder liên quan đến kết nối đến database 
+        ├── View                    # Folder liên quan đến hiện giao diện trên trang web
+        ├── Control                 # Folder liên quan đến xử lý form, truy vấn, cập nhật database
+        ├── images                  # Hình ảnh sử dụng trong chương trình
+        │   ├── png 
+        │   ├── svg 
+        │   └── userImage
+        ├── license
+        ├── index.php
+        ├── register.php
+        └── README.md               # bạn đang ở đây nè
 
 <!-- GETTING STARTED -->
 ## Cài đặt và sử dụng
@@ -98,11 +117,6 @@
 <!-- HOSTING -->
 ### Hosting
 -  ~~Truy cập [heroku](#)~~
-
-
-<!-- EXAMPLE -->
-## Ví dụ
-
 
 <!-- ROADMAP -->
 ## Tiến trình
