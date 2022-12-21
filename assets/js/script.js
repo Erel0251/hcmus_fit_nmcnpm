@@ -14,7 +14,7 @@ function passwordButton(password, button) {
 
 // Edit button
 function editButton(no){
-    let name = document.getElementById('name' + no);
+    //let name = document.getElementById('name' + no);
     let date = document.getElementById('date' + no);
     let count = document.getElementById('count' + no);
     let location = document.getElementById('location' + no);
@@ -27,12 +27,12 @@ function editButton(no){
         button.classList.remove('btn-outline-warning');
         button.classList.add('btn-outline-info');
 
-        name.classList.replace('form-control-plaintext', 'form-control');
+        //name.classList.replace('form-control-plaintext', 'form-control');
         date.classList.replace('form-control-plaintext', 'form-control');
         count.classList.replace('form-control-plaintext', 'form-control');
         location.classList.replace('form-control-plaintext', 'form-control');
 
-        name.removeAttribute('readonly');
+        //name.removeAttribute('readonly');
         date.removeAttribute('readonly');
         count.removeAttribute('readonly');
         location.removeAttribute('readonly');
@@ -41,12 +41,12 @@ function editButton(no){
         button.classList.remove('btn-outline-info');
         button.classList.add('btn-outline-warning');
 
-        name.classList.replace('form-control', 'form-control-plaintext');
+        //name.classList.replace('form-control', 'form-control-plaintext');
         date.classList.replace('form-control', 'form-control-plaintext');
         count.classList.replace('form-control', 'form-control-plaintext');
         location.classList.replace('form-control', 'form-control-plaintext');
 
-        name.setAttribute('readonly', 'true');
+        //name.setAttribute('readonly', 'true');
         date.setAttribute('readonly', 'true');
         count.setAttribute('readonly', 'true');
         location.setAttribute('readonly', 'true');
@@ -56,7 +56,16 @@ function editButton(no){
 function deleteButton(no){
     let button = document.getElementById('deleteButton' + no);
 
-    let text = "Bạn có chắc muốn xóa đơn nhập này?";
+    let text = "Bạn có chắc muốn xóa đơn này?";
+    if (confirm(text)){
+        button.type = "submit";
+    }
+}
+
+function updateButton(no){
+    let button = document.getElementById('updateButton' + no);
+
+    let text = "Bạn có chắc muốn cập nhật đơn này?";
     if (confirm(text)){
         button.type = "submit";
     }

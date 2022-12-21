@@ -17,8 +17,7 @@ while ($row = $query->fetch()) {
     array_push($listInventory, $row);
 }
 
-
-
+/* 
 $sql = "SELECT hang.MAHANG, hang.TENHANG 
         FROM mat_hang hang 
         WHERE hang.LOAIHANG LIKE 'Thức uống';";
@@ -30,6 +29,14 @@ $stock = array();
 while ($row = $query->fetch()) {
     array_push($stock, $row);
 }
+
+
+<select class="custom-select" id="<?php echo "name" . $i ?>" name="tenhang">
+    <?php for ($item = 0; $item < count($stock); $item++) { ?>
+        <option value="<?php echo $stock[$item]['MAHANG'] ?>" <?php if ($listInventory[$i]['MAHANG'] == $stock[$item]['MAHANG']) echo "selected" ?>><?php echo $stock[$item]['TENHANG'] ?></option>
+    <?php } ?>
+</select>
+*/
 
 $tenPerPage = ceil(count($listInventory) / 10);
 $page = isset($_GET['page']) ? $_GET['page'] - 1 : 0;
@@ -111,13 +118,7 @@ $next = $page >= $tenPerPage - 1 ? "disabled" : "";
 
                                             <input type="text" id="<?php echo "name" . $i ?>" name="tenhang" class="form-control-plaintext align-center" value="<?php echo $listInventory[$i]['TENHANG'] ?>" readonly />
 
-                                            <!--
-                                            <select class="custom-select" id="<?php echo "name" . $i ?>" name="tenhang">
-                                                <?php for ($item = 0; $item < count($stock); $item++) { ?>
-                                                    <option value="<?php echo $stock[$item]['MAHANG'] ?>" <?php if ($listInventory[$i]['MAHANG'] == $stock[$item]['MAHANG']) echo "selected" ?>><?php echo $stock[$item]['TENHANG'] ?></option>
-                                                <?php } ?>
-                                            </select>
-                                            -->
+                                            
                                         </td>
 
                                         <!-- Ngày nhập hàng -->
@@ -138,7 +139,7 @@ $next = $page >= $tenPerPage - 1 ? "disabled" : "";
                                         <!-- các nút chỉnh sửa thông tin -->
                                         <td class="p-0">
                                             <!-- cập nhật dữ liệu lên database -->
-                                            <button type="submit" name="update" value="update" class="btn btn-outline-success m-1">
+                                            <button type="button" id="<?php echo "updateButton" . $i ?>" onclick="updateButton('<?php echo $i ?>')" name="update" value="update" class="btn btn-outline-success m-1">
                                                 <img src="../assets/images/png/icons/upload.png" style="width: 18px; height: 18px" alt="">
                                             </button>
 
