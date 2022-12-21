@@ -5,7 +5,8 @@ include "../Model/db_connect.php";
 $sql = "SELECT ct.MAHANG, ct.MAPHIEUNHAP, ct.SOLUONG, hang.TENHANG, phieu.NGAYNHAP, phieu.DIACHIKHO 
         FROM ct_nhap ct 
         JOIN mat_hang hang on ct.MAHANG = hang.MAHANG
-        JOIN phieu_nhap_hang phieu on ct.MAPHIEUNHAP = phieu.MAPHIEUNHAP;";
+        JOIN phieu_nhap_hang phieu on ct.MAPHIEUNHAP = phieu.MAPHIEUNHAP
+        ORDER BY ct.MAPHIEUNHAP ASC;";
 
 $query = $conn->query($sql);
 $query->setFetchMode(PDO::FETCH_ASSOC);
@@ -14,6 +15,20 @@ $listInventory = array();
 
 while ($row = $query->fetch()) {
     array_push($listInventory, $row);
+}
+
+
+
+$sql = "SELECT hang.MAHANG, hang.TENHANG 
+        FROM mat_hang hang 
+        WHERE hang.LOAIHANG LIKE 'Thức uống';";
+
+$query = $conn->query($sql);
+$query->setFetchMode(PDO::FETCH_ASSOC);
+
+$stock = array();
+while ($row = $query->fetch()) {
+    array_push($stock, $row);
 }
 
 $tenPerPage = ceil(count($listInventory) / 10);
@@ -40,14 +55,14 @@ $next = $page >= $tenPerPage - 1 ? "disabled" : "";
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- ========== CSS ========== -->
+    <!-- ========== CSS and Javacript ========== -->
     <link rel="stylesheet" href="../assets/css/style.css">
     <script src="../assets/js/script.js"></script>
 
     <title>Quản lý căn tin</title>
 </head>
 
-<body>
+<body <?php if (isset($_GET['Success'])) ?> onload="<?php echo "alert('" . $_GET['Success'] . "')";?>">
     <div class="vh-100 d-flex align-items-center justify-content-center bg-secondary">
         <div class="container w-75 bg-light">
 
@@ -59,7 +74,11 @@ $next = $page >= $tenPerPage - 1 ? "disabled" : "";
                 <!-- Header -->
                 <div class="row h2 mt-1 justify-content-center " style="color: #FD0000">Quản lý hàng tồn</div>
 
-                <div class="row h5" style="margin-left: 120px;">Lịch sử nhập:</div>
+
+
+                <div class="row h5" style="margin-left: 120px;">
+                    <div class="col-3">Lịch sử nhập:</div>
+                </div>
 
 
                 <!-- Body -->
@@ -83,28 +102,37 @@ $next = $page >= $tenPerPage - 1 ? "disabled" : "";
                                         <!-- KEY để truy vấn trong database-->
                                         <input type="hidden" name="mahang" value="<?php echo $listInventory[$i]['MAHANG'] ?>" />
                                         <input type="hidden" name="maphieu" value="<?php echo $listInventory[$i]['MAPHIEUNHAP'] ?>" />
-                                        
+
                                         <!-- STT -->
                                         <td> <?php echo $i + 1; ?> </td>
 
                                         <!-- Tên mặt hàng nhập về -->
                                         <td>
-                                            <input type="text" id="<?php echo "name" . $i ?>" name="tenhang" class="form-control-plaintext align-center" value="<?php echo $listInventory[$i]['TENHANG'] ?>" readonly/>
+
+                                            <input type="text" id="<?php echo "name" . $i ?>" name="tenhang" class="form-control-plaintext align-center" value="<?php echo $listInventory[$i]['TENHANG'] ?>" readonly />
+
+                                            <!--
+                                            <select class="custom-select" id="<?php echo "name" . $i ?>" name="tenhang">
+                                                <?php for ($item = 0; $item < count($stock); $item++) { ?>
+                                                    <option value="<?php echo $stock[$item]['MAHANG'] ?>" <?php if ($listInventory[$i]['MAHANG'] == $stock[$item]['MAHANG']) echo "selected" ?>><?php echo $stock[$item]['TENHANG'] ?></option>
+                                                <?php } ?>
+                                            </select>
+                                            -->
                                         </td>
 
                                         <!-- Ngày nhập hàng -->
                                         <td>
-                                            <input type="date" id="<?php echo "date" . $i ?>" name="ngaynhap" class="form-control-plaintext" value="<?php echo $listInventory[$i]['NGAYNHAP'] ?>" readonly/>
+                                            <input type="date" id="<?php echo "date" . $i ?>" name="ngaynhap" class="form-control-plaintext" value="<?php echo $listInventory[$i]['NGAYNHAP'] ?>" readonly />
                                         </td>
 
                                         <!-- Số lượng nhập -->
                                         <td>
-                                            <input type="text" id="<?php echo "count" . $i ?>" name="soluong" class="form-control-plaintext" value="<?php echo $listInventory[$i]['SOLUONG'] ?>" readonly/>
+                                            <input type="text" id="<?php echo "count" . $i ?>" name="soluong" class="form-control-plaintext" value="<?php echo $listInventory[$i]['SOLUONG'] ?>" readonly />
                                         </td>
 
                                         <!-- Địa chỉ mặt hàng cung cấp -->
                                         <td>
-                                            <input type="text" id="<?php echo "location" . $i ?>" name="diachi" class="form-control-plaintext" value="<?php echo $listInventory[$i]['DIACHIKHO'] ?>" readonly/>
+                                            <input type="text" id="<?php echo "location" . $i ?>" name="diachi" class="form-control-plaintext" value="<?php echo $listInventory[$i]['DIACHIKHO'] ?>" readonly />
                                         </td>
 
                                         <!-- các nút chỉnh sửa thông tin -->
@@ -115,12 +143,12 @@ $next = $page >= $tenPerPage - 1 ? "disabled" : "";
                                             </button>
 
                                             <!-- cập nhật dữ liệu thuần ở front-end -->
-                                            <button type="button" id="<?php echo "button" . $i ?>" onclick="editButton('<?php echo $i ?>')" class="btn btn-outline-warning m-1">
+                                            <button type="button" id="<?php echo "editButton" . $i ?>" onclick="editButton('<?php echo $i ?>')" class="btn btn-outline-warning m-1">
                                                 <img src="../assets/images/png/icons/editing.png" id="<?php echo "image" . $i ?>" style="width: 18px; height: 18px" alt="">
                                             </button>
 
                                             <!-- xóa dữ liệu khỏi database -->
-                                            <button type="submit" name="delete" value="delete" class="btn btn-outline-danger m-1">
+                                            <button type="button" id="<?php echo "deleteButton" . $i ?>" onclick="deleteButton('<?php echo $i ?>')" name="delete" value="delete" class="btn btn-outline-danger m-1">
                                                 <img src="../assets/images/png/icons/delete.png" style="width: 18px; height: 18px" alt="">
                                             </button>
                                         </td>
@@ -163,38 +191,6 @@ $next = $page >= $tenPerPage - 1 ? "disabled" : "";
                     <a href="#" class="col-3 btn text-white" style="border-radius: 8rem; padding: 0.75rem 2.5rem; background: #80ff80;">Xác nhận</a>
                             -->
                     <button data-modal-target="#form-modal" class="col-3 btn text-white" style="border-radius: 8rem; padding: 0.75rem 2.5rem; background: #80ff80;"> test</button>
-                    <div class="form-modal container" id="form-modal">
-                        <form action="">
-                            <div class="text-center h1 pb-2" style="color: #ED00F2; border-bottom: 1px solid black">HEADER</div>
-
-                            <div class="form-outline ">
-                                <label class="form-label" for="username">Input: </label>
-                                <input type="text" id="username" name="username" class="form-control" placeholder="Enter username" />
-                            </div>
-
-                            <div class="form-outline ">
-                                <label class="form-label" for="username">Input: </label>
-                                <input type="text" id="username" name="username" class="form-control" placeholder="Enter username" />
-                                <div class="form-outline ">
-                                    <label class="form-label" for="username">Input: </label>
-                                    <input type="text" id="username" name="username" class="form-control" placeholder="Enter username" />
-                                </div>
-
-
-                                <!-- Submit -->
-                                <div class="row my-2 text-center justify-content-sm-between">
-                                    <!--
-                            <button type="button" class="btn btn-lg text-white"
-                                style="border-radius: 8rem; padding-left: 2.5rem; padding-right: 2.5rem; background: #CA9FC8;">Đăng
-                                ký</button>
-                            -->
-                                    <button data-close-button class="col-4 btn text-white" style="border-radius: 8rem; padding: 0.75rem 2.0rem; background: #9C9C9C;">Hủy</button>
-
-                                    <button type="submit" class="col-4 btn text-white" style="border-radius: 8rem; padding: 0.75rem 2.0rem; background: #80FF80;">Xác nhận</button>
-                                </div>
-                        </form>
-
-                    </div>
 
                 </div>
             </div>

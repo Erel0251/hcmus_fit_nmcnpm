@@ -2,25 +2,7 @@
 session_start();
 include "../Model/db_connect.php";
 
-if (isset($_GET['keyword'])) {
-    $min = $_GET['min'] ?: 0;
-    $max = $_GET['max'] ?: 100000;
-    $minmax = " WHERE `DONGIA` >= " . $min . " AND `DONGIA` <= " . $max;
-    $keyword = $_GET['keyword'] ? " AND `TENHANG` LIKE '%" . $_GET['keyword'] . "%'": '';
-    $type = "";
-    if (filter_has_var(INPUT_GET, 'type')){
-        $temp = array_map(fn ($value) =>'\'' . $value . '\'',$_GET['type']);
-        
-        $type = " AND `LOAIHANG` IN (" . implode(", ", $temp) . ")";
-          
-    }
-
-    $search = $minmax . $keyword . $type;
-} else {
-    $search = "";
-}
-
-$sql = "SELECT * FROM `mat_hang`" . $search;
+$sql = "SELECT * FROM `mat_hang`";
 // WHERE `LOAIHANG` LIKE 'Đồ ăn'
 $query = $conn->query($sql);
 $query->setFetchMode(PDO::FETCH_ASSOC);
@@ -57,6 +39,7 @@ $query->setFetchMode(PDO::FETCH_ASSOC);
             <!-- Header -->
             <?php include "./header.php" ?>
            
+            <!-- Body -->
             <a  class= "btn btn-primary" href="them.html ">Thêm </a>
 
             <div class="row overflow-auto mt-1 border border-black justify-content-center align-items-center" style="height: 500px; border-width: 20px;">

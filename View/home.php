@@ -54,19 +54,9 @@ $count = 0;
     <div class="vh-100 d-flex align-items-center justify-content-center bg-secondary">
         <div class="container w-75 bg-light">
 
+            <!-- Header -->
             <?php include "./header.php" ?>
 
-
-            <!-- Header menu 
-                    <div class="row ">
-                <a href="#" class="col h3 p-1 rounded-top bg-white text-center text-decoration-none text-danger">
-                    Đồ ăn
-                </a>
-                <a href="./home-drink.php" class="col h3 p-1 rounded-top bg-secondary text-center text-decoration-none text-dark">
-                    Thức uống
-                </a>
-            </div>
-            -->
 
 
             <!-- Body menu -->

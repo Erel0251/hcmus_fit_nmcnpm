@@ -12,15 +12,14 @@ function passwordButton(password, button) {
     }
 }
 
-//let name_data, date_data, count_data, location_data;
-
+// Edit button
 function editButton(no){
     let name = document.getElementById('name' + no);
     let date = document.getElementById('date' + no);
     let count = document.getElementById('count' + no);
     let location = document.getElementById('location' + no);
     
-    let button = document.getElementById('button' + no);
+    let button = document.getElementById('editButton' + no);
     let image = document.getElementById('image' + no);
 
     if (button.classList.contains('btn-outline-warning')){
@@ -51,5 +50,14 @@ function editButton(no){
         date.setAttribute('readonly', 'true');
         count.setAttribute('readonly', 'true');
         location.setAttribute('readonly', 'true');
+    }
+}
+
+function deleteButton(no){
+    let button = document.getElementById('deleteButton' + no);
+
+    let text = "Bạn có chắc muốn xóa đơn nhập này?";
+    if (confirm(text)){
+        button.type = "submit";
     }
 }

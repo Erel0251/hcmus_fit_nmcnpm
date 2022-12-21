@@ -39,3 +39,13 @@
     opacity: 1;
     pointer-events: all;
 }
+
+.hide-dropdown {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none; 
+    border: none;
+    /* needed for Firefox: */
+    overflow:hidden;
+    width: 120%;
+}

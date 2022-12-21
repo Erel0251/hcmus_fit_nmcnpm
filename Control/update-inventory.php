@@ -20,15 +20,18 @@ if (isset($_POST['update'])) {
     $CtNhap = "UPDATE `ct_nhap` SET `SOLUONG` = '$soluong' WHERE `ct_nhap`.`MAHANG` = '$mahang' AND `ct_nhap`.`MAPHIEUNHAP` = '$maphieu';";
     $PhieuNhap = "UPDATE `phieu_nhap_hang` SET `NGAYNHAP` = '$ngaynhap', `DIACHIKHO` = '$diachi' WHERE `phieu_nhap_hang`.`MAPHIEUNHAP` = '$maphieu';";
     
+    $query = $conn->query($CtNhap);
+    $query = $conn->query($PhieuNhap);
+
+    header("Location: ../View/inventory.php?Success=Update row successfully");
+    exit();
+
 } else if (isset($_POST['delete'])) {
     $CtNhap = "DELETE FROM ct_nhap WHERE `ct_nhap`.`MAHANG` = '$mahang' AND `ct_nhap`.`MAPHIEUNHAP` = '$maphieu'";
 
+    $query = $conn->query($CtNhap);
+
+    header("Location: ../View/inventory.php?Success=Delete row successfully");
+    exit();
 } 
-
-$query = $conn->query($CtNhap);
-if ($PhieuNhap)
-    $query = $conn->query($PhieuNhap);
-
-header("Location: ../View/inventory.php");
-exit();
 ?>
