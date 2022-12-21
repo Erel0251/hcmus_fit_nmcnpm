@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,13 +26,13 @@
     <div class="vh-100 d-flex align-items-center justify-content-center bg-secondary">
         <div class="container w-auto position-relative">
 
-            <div class="position-absolute h4" style="left: 50px;"><img src="./images/svg/logo.svg"
+            <div class="position-absolute h4" style="left: 50px;"><img src="./assets/images/svg/logo.svg"
                 style="display: inline-block; width: 80px; height: auto;"  alt="HCMUS"> HCMUS Canteen</div>
 
             <div class="row bg-light mh-100">
 
                 <div class="col-md-6 p-0 m-0">
-                    <img src="./images/svg/background1.svg" class="img-fluid" alt="background 1">
+                    <img src="./assets/images/svg/background1.svg" class="img-fluid" alt="background 1">
                 </div>
 
 
@@ -60,7 +61,7 @@
                             <div class="input-group">
                                 <input type="password" id="password" name="password" class="form-control" placeholder="Enter password" required/>
                                 <button class="btn btn-outline-secondary" type="button" onclick="passwordButton('password', 'button')"><img
-                                        src="./images/png/icons/002-hide.png" id="button" alt=""></button>
+                                        src="./assets/images/png/icons/002-hide.png" id="button" alt=""></button>
                             </div>
 
                         </div>

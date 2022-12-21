@@ -12,7 +12,7 @@ $username = $_SESSION['username'];
 echo "<pre>";
 print_r($_FILES['image']);
 echo "</pre>";
-$image_path = "../images/userImage/" . $_FILES['image']['name'];
+$image_path = "../assets/images/userImage/" . $_FILES['image']['name'];
 move_uploaded_file($_FILES['image']['tmp_name'], $image_path);
 
 $sql = "UPDATE `nguoi_dung` SET `HOTEN` = '$fullname', 

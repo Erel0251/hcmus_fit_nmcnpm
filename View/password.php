@@ -40,7 +40,7 @@ session_start();
 
 
                 <div class="col-md-6 p-0 m-0 d-flex flex-column justify-content-center align-items-center">
-                    <img src="../images/png/reset-password.png" class="img" style="width: 50%; height: auto;"
+                    <img src="../assets/images/png/reset-password.png" class="img" style="width: 50%; height: auto;"
                         alt="profile">
                 </div>
 
@@ -69,7 +69,7 @@ session_start();
                             <div class="input-group">
                                 <input type="password" id="oldpassword" name="oldpassword" class="form-control" placeholder="Password" required/>
                                 <button class="btn btn-outline-secondary" onclick="passwordButton('oldpassword', 'button1')" type="button"><img
-                                        src="../images/png/icons/002-hide.png" id="button1" alt=""></button>
+                                        src="../assets/images/png/icons/002-hide.png" id="button1" alt=""></button>
                             </div>
                         </div>
 
@@ -79,7 +79,7 @@ session_start();
                             <div class="input-group">
                                 <input type="password" id="password" name="newpassword" class="form-control" placeholder="New password" required/>
                                 <button class="btn btn-outline-secondary" onclick="passwordButton('password', 'button2')" type="button"><img
-                                        src="../images/png/icons/002-hide.png" id="button2" alt=""></button>
+                                        src="../assets/images/png/icons/002-hide.png" id="button2" alt=""></button>
                             </div>
                         </div>
 
@@ -89,7 +89,7 @@ session_start();
                             <div class="input-group">
                                 <input type="password" id="repassword" name="repassword" class="form-control" placeholder="Confirm new password" required/>
                                 <button class="btn btn-outline-secondary" onclick="passwordButton('repassword', 'button3')" type="button"><img
-                                        src="../images/png/icons/002-hide.png" id="button3" alt=""></button>
+                                        src="../assets/images/png/icons/002-hide.png" id="button3" alt=""></button>
                             </div>
                         </div>
 

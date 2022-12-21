@@ -8,7 +8,7 @@ $query = $conn->query($sql);
 $query->setFetchMode(PDO::FETCH_ASSOC);
 $row = $query->fetch();
 
-$image_path = $_SESSION['image'] == '../images/png/icons/004-user.png' ? '../images/png/profile.png' : $_SESSION['image'];
+$image_path = $_SESSION['image'] == '../assets/images/png/icons/004-user.png' ? '../assets/images/png/profile.png' : $_SESSION['image'];
 
 ?>
 

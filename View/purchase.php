@@ -58,14 +58,14 @@
                     <input type="text" class="form-control" aria-label="Text input with dropdown button">
 
                     <button class="btn btn-outline-secondary" type="button" id="button-addon"><img
-                            src="../images/png/icons/001-loupe.png" alt=""></button>
+                            src="../assets/images/png/icons/001-loupe.png" alt=""></button>
                 </div>
 
 
                 <!-- Logo -->
                 <div class="">
                     <a href="./home.php" class="h2 text-dark text-decoration-none">
-                        <img src="../images/svg/logo.svg" style="display: inline-block; width: 80px; height: auto;"
+                        <img src="../assets/images/svg/logo.svg" style="display: inline-block; width: 80px; height: auto;"
                             alt="HCMUS"> HCMUS Canteen
                     </a>
                 </div>
@@ -79,7 +79,7 @@
                 <div class="dropdown">
                     <button class="btn btn-outline-info dropdown-toggle" type="button" id="dropdownMenuButton1"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="../images/png/icons/004-user.png" alt="">
+                        <img src="../assets/images/png/icons/004-user.png" alt="">
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
                         <li>
@@ -105,7 +105,7 @@
 
             <!-- Image -->
             <div class="row position-relative">
-                <img src="../images/svg/background2.svg" class="img p-0" style="filter: brightness(70%)" alt="">
+                <img src="../assets/images/svg/background2.svg" class="img p-0" style="filter: brightness(70%)" alt="">
                 <div class="text-white position-absolute" style="left: 25px; top: 10px;">
                     <div class="h4">Cần 1 bữa ăn ngon bổ rẻ?</div>
                     <div class="h5">Đừng lo</div>
