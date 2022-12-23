@@ -40,29 +40,37 @@ $query->setFetchMode(PDO::FETCH_ASSOC);
             <?php include "./header.php" ?>
            
             <!-- Body -->
-            <a  class= "btn btn-primary" href="them.html ">Thêm </a>
+            <a  class= "btn btn-success" style="margin-top: 10px;" data-bs-toggle="modal" data-bs-target="#ModalThem">
+                <img  src="../assets/images/png/icons/them.png"  width= 50px; height= 50px>
+             </a>
 
             <div class="row overflow-auto mt-1 border border-black justify-content-center align-items-center" style="height: 500px; border-width: 20px;">
                 <?php while ($row = $query->fetch()) { ?>
                 <div class="col-4 border border-secondary d-flex flex-column justify-content-center">
-                    <img src="<?php echo $row['IMAGE'] ?>" class="align-self-center" style="width: 350px; height: 200px;" alt="">
+                    <img src="<?php echo $row['IMAGE'] ?>" class="align-self-center" style="margin-top: 18px; width: 350px; height: 200px;" alt="">
                     <div class="h4 text-center text-dark">
                     <?php echo $row['TENHANG'] ?>
                     </div>
-                    <div class="d-flex flex-row justify-content-between">
+                    <div style="margin-bottom: 10px;"class="d-flex flex-row justify-content-between">
                         <div class="h6 text-primary">Mã hàng:  <?php echo $row['MAHANG'] ?></div>
                         <div class="h6 text-secondary">Giá: <?php echo number_format($row['DONGIA']) . "đ" ?></div>
                         <div class="h6 text-primary">Còn:  <?php echo $row['SOLUONG'] ?></div>
-                        <div>
-                            
-                            <a  href="sua.php?id=<?php echo $row['MAHANG'];?> ">Sửa </a>
-                            <a onclick="return confirm('Bạn có muốn xóa món ăn này không?');" href="xoa.php?id=<?php echo $row['MAHANG'];?> ">Xóa </a>
-                        </div>
+                        
 
                        
                         
                     </div>
+                    <div class="d-flex justify-content-end " style="margin-bottom: 7px;" >
+                            
+                            <a style="margin-right:7px"   class= "btn btn-warning"  href="sua.php?id=<?php echo $row['MAHANG'];?> ">
+                            <img src="../assets/images/png/icons/editing.png" width= 18x; height= 18px>
+                             </a>
+                            <a class= "btn btn-danger" onclick="return confirm('Bạn có muốn xóa món ăn này không?');" href="xoa.php?id=<?php echo $row['MAHANG'];?> ">
+                            <img  src="../assets/images/png/icons/delete.png" width= 18px; height= 18px>
+                            </a>
+                        </div>
                 </div>
+                
                 <?php } ?>
             </div>
            
@@ -80,6 +88,60 @@ $query->setFetchMode(PDO::FETCH_ASSOC);
 
 -->
 <script src="../assets/js/script.js"></script>
+
+<!-- Modal  Them-->
+<div class="modal fade" id="ModalThem" tabindex="-1" role="dialog" aria-labelledby="ModalThemLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title col text-center" id="ModalThemLabel">Thêm món ăn</h2>
+       
+      </div>
+      <div class="modal-body">
+      <div class="container">
+        
+        <form action="them.php" method="post" id="formthem">
+            <div class="form-group">
+                 <label for="mahang">Mã hàng </label>
+                 <input type="text" id ="mahang" class="form-control" name="mahang">
+                 </div>
+            <div class="form-group">
+                <label for="tenhang">Tên hàng </label>
+                 <input type="text" id ="tenhang" class="form-control" name="tenhang">
+            </div>
+            <div class="form-group">
+                <label for="image">Image </label>
+                 <input type="text" id ="image" class="form-control" name="image">
+            </div>
+            <div class="form-group">
+                <label for="loaihang">Loại hàng </label>
+                 <input type="text" id ="loaihang" class="form-control" name="loaihang">
+            </div>
+            <div class="form-group">
+                <label for="dongia">Đơn giá </label>
+                 <input type="text" id ="dongia" class="form-control" name="dongia">
+            </div>
+            <div class="form-group">
+                <label for="soluong">Số lượng </label>
+                 <input type="text" id ="soluong" class="form-control" name="soluong">
+            </div>
+            <br>
+           
+           
+        </form>
+
+    </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+        <button type="submit" form ="formthem" class="btn btn-success">Thêm</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 </body>
 
 </html>

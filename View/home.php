@@ -63,7 +63,7 @@ $count = 0;
             <div class="row overflow-auto mt-1 border border-black justify-content-center align-items-center" style="height: 500px; border-width: 20px;">
                 <?php while ($row = $query->fetch()) { $count++;?>
                 <div class="col-4 border border-secondary d-flex flex-column justify-content-center">
-                    <img src="<?php echo $row['IMAGE'] ?>" class="align-self-center" style="width: 350px; height: 200px;" alt="">
+                    <img src="<?php echo $row['IMAGE'] ?>" class="align-self-center" style="margin-top: 18px; width: 350px; height: 200px;" alt="">
                     <div class="h4 text-center text-dark">
                     <?php echo $row['TENHANG'] ?>
                     </div>
