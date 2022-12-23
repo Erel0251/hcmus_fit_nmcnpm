@@ -43,11 +43,15 @@ $page = isset($_GET['page']) ? $_GET['page'] - 1 : 0;
 $prev = $page <= 0 ? "disabled" : "";
 $next = $page >= $tenPerPage - 1 ? "disabled" : "";
 
-
+$success = isset($_GET['Success']) ? $_GET['Success'] : "";
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
+
+
 
 <head>
     <meta charset="UTF-8">
@@ -66,10 +70,14 @@ $next = $page >= $tenPerPage - 1 ? "disabled" : "";
     <link rel="stylesheet" href="../assets/css/style.css">
     <script src="../assets/js/script.js"></script>
 
+    <script>
+        let text = '<?php echo $success ?>';
+    </script>
+
     <title>Quản lý căn tin</title>
 </head>
 
-<body <?php if (isset($_GET['Success'])) ?> onload="<?php echo "alert('" . $_GET['Success'] . "')";?>">
+<body onload="if (text != '' ) alert(text)">
     <div class="vh-100 d-flex align-items-center justify-content-center bg-secondary">
         <div class="container w-75 bg-light">
 
@@ -103,8 +111,9 @@ $next = $page >= $tenPerPage - 1 ? "disabled" : "";
                         </thead>
                         <tbody>
                             <?php for ($i = $page * 10; $i < min(($page + 1) * 10, count($listInventory)); $i++) { ?>
-                                <tr>
-                                    <form action="../Control/update-inventory.php" method="POST">
+                                <form action="../Control/update-inventory.php" method="POST">
+                                    <tr id="<?php echo "row" . $i?>" style="height: 3rem">
+
 
                                         <!-- KEY để truy vấn trong database-->
                                         <input type="hidden" name="mahang" value="<?php echo $listInventory[$i]['MAHANG'] ?>" />
@@ -115,25 +124,22 @@ $next = $page >= $tenPerPage - 1 ? "disabled" : "";
 
                                         <!-- Tên mặt hàng nhập về -->
                                         <td>
-
-                                            <input type="text" id="<?php echo "name" . $i ?>" name="tenhang" class="form-control-plaintext align-center" value="<?php echo $listInventory[$i]['TENHANG'] ?>" readonly />
-
-                                            
+                                            <input type="text" name="tenhang" class="form-control-plaintext" value="<?php echo $listInventory[$i]['TENHANG'] ?>" readonly />
                                         </td>
 
                                         <!-- Ngày nhập hàng -->
                                         <td>
-                                            <input type="date" id="<?php echo "date" . $i ?>" name="ngaynhap" class="form-control-plaintext" value="<?php echo $listInventory[$i]['NGAYNHAP'] ?>" readonly />
+                                            <input type="date" name="ngaynhap" class="form-control-plaintext" value="<?php echo $listInventory[$i]['NGAYNHAP'] ?>" readonly />
                                         </td>
 
                                         <!-- Số lượng nhập -->
                                         <td>
-                                            <input type="text" id="<?php echo "count" . $i ?>" name="soluong" class="form-control-plaintext" value="<?php echo $listInventory[$i]['SOLUONG'] ?>" readonly />
+                                            <input type="text" name="soluong" class="form-control-plaintext" value="<?php echo $listInventory[$i]['SOLUONG'] ?>" readonly />
                                         </td>
 
                                         <!-- Địa chỉ mặt hàng cung cấp -->
                                         <td>
-                                            <input type="text" id="<?php echo "location" . $i ?>" name="diachi" class="form-control-plaintext" value="<?php echo $listInventory[$i]['DIACHIKHO'] ?>" readonly />
+                                            <input type="text" name="diachi" class="form-control-plaintext" value="<?php echo $listInventory[$i]['DIACHIKHO'] ?>" readonly />
                                         </td>
 
                                         <!-- các nút chỉnh sửa thông tin -->
@@ -154,8 +160,9 @@ $next = $page >= $tenPerPage - 1 ? "disabled" : "";
                                             </button>
                                         </td>
 
-                                    </form>
-                                </tr>
+
+                                    </tr>
+                                </form>
                             <?php } ?>
                         </tbody>
                     </table>

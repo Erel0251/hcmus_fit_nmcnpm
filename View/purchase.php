@@ -1,6 +1,45 @@
 <?php
 session_start();
 
+include "../Model/db_connect.php";
+
+date_default_timezone_set('Asia/Ho_Chi_Minh');
+$currentDate = date('Y-m-d', time());
+
+$sql = "SELECT USERNAME, HOTEN, GIOITINH
+        FROM nguoi_dung";
+
+$query = $conn->query($sql);
+$query->setFetchMode(PDO::FETCH_ASSOC);
+
+$nguoi_dung = array();
+
+while ($row = $query->fetch()) {
+    array_push($nguoi_dung, $row);
+}
+
+$sql = "SELECT MAHANG, TENHANG, DONGIA
+        FROM mat_hang";
+
+$query = $conn->query($sql);
+$query->setFetchMode(PDO::FETCH_ASSOC);
+
+$mat_hang = array();
+
+while ($row = $query->fetch()) {
+    array_push($mat_hang, $row);
+}
+
+
+$sql = "SELECT COUNT(MADON) AS STT
+        FROM `don_hang`;";
+
+$query = $conn->query($sql);
+$query->setFetchMode(PDO::FETCH_ASSOC);
+$row = $query->fetch();
+
+$madon = "MD" . (sprintf("%03d\n", $row['STT'] + 1));
+
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +58,8 @@ session_start();
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- ========== Bootstrap     ========== -->
+    <!-- ========== CSS & Javascript ========== -->
+    <script src="../assets/js/script.js"></script>
 
     <title>Quản lý căn tin</title>
 </head>
@@ -29,110 +69,94 @@ session_start();
         <div class="container w-75 bg-light">
 
             <!-- Header -->
-            <div class="d-flex justify-content-between align-items-center">
-
-                <!-- Search bar -->
-                <div class="input-group w-25">
-
-                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                        data-bs-auto-close="true" aria-expanded="false"></button>
-                    <ul class="dropdown-menu">
-                        <form class="p-1">
-
-                            <div class=""><strong>Giá</strong></div>
-                            <div class="d-flex justify-content-center">
-                                <input type="number" placeholder="Từ" class="w-50">
-                                <div class="">-</div>
-                                <input type="number" placeholder="Đến" class="w-50">
-                            </div>
-
-                            <div><strong>Tình trạng</strong></div>
-                            <div class="d-flex justify-content-around">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="Con" id="">
-                                    <label class="form-check-label">Còn</label>
-                                </div>
-
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="Het" id="">
-                                    <label class="form-check-label">Hết</label>
-                                </div>
-                            </div>
-                        </form>
-                    </ul>
-                    <input type="text" class="form-control" aria-label="Text input with dropdown button">
-
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon"><img
-                            src="../assets/images/png/icons/001-loupe.png" alt=""></button>
-                </div>
-
-
-                <!-- Logo -->
-                <div class="">
-                    <a href="./home.php" class="h2 text-dark text-decoration-none">
-                        <img src="../assets/images/svg/logo.svg" style="display: inline-block; width: 80px; height: auto;"
-                            alt="HCMUS"> HCMUS Canteen
-                    </a>
-                </div>
-
-
-                <!-- Thẻ này để đẩy logo ra giữa, ko để làm gì cả -->
-                <div class="w25"></div>
-
-
-                <!-- Profile -->
-                <div class="dropdown">
-                    <button class="btn btn-outline-info dropdown-toggle" type="button" id="dropdownMenuButton1"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="../assets/images/png/icons/004-user.png" alt="">
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
-                        <li>
-                            <h3 class="dropdown-header text-end">Xin chào <span class="text-primary">Cashier</span>
-                            </h3>
-                        </li>
-                        <li><a class="dropdown-item text-end" href="../index.php">Đăng xuất</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li>
-                            <h4 class="dropdown-header">Bạn là <span class="text-warning">Thu ngân</span></h4>
-                        </li>
-                        <li><a class="dropdown-item" href="./profile.php">Thông tin cá nhân</a></li>
-                        <li><a class="dropdown-item" href="./password.php">Đổi mật khẩu</a></li>
-                        <li><a class="dropdown-item" href="./purchase.php">Lập hóa đơn</a></li>
-                        <li><a class="dropdown-item" href="./day-revenue.php">Tính doanh thu và hàng tồn theo ngày</a></li>
-                        <li><a class="dropdown-item" href="./month-revenue.php">Tính doanh thu tháng</a></li>
-                    </ul>
-                </div>
-
-            </div>
-
-            <!-- Image -->
-            <div class="row position-relative">
-                <img src="../assets/images/svg/background2.svg" class="img p-0" style="filter: brightness(70%)" alt="">
-                <div class="text-white position-absolute" style="left: 25px; top: 10px;">
-                    <div class="h4">Cần 1 bữa ăn ngon bổ rẻ?</div>
-                    <div class="h5">Đừng lo</div>
-                    <div class="h5">Căn tin tự nhiên bao no</div>
-                </div>
-            </div>
-
-
-            <!-- Header menu -->
-            <div class="row ">
-
-            </div>
+            <?php include "./header.php" ?>
 
 
             <!-- Body menu -->
             <div class="row overflow-auto " style="height: 450px">
 
-                </div>
+                <div class="row h2 mt-1 p-0  justify-content-center " style="color: #FD0000; height: 0rem;">Đơn thanh toán</div>
 
+                <form class="row justify-content-center" action="./bill.php" method="POST" style="margin: 0 auto;">
+                    <div class="col-4">
+
+                        <!-- Mã đơn input -->
+                        <div class="row my-2 form-outline d-flex align-items-center">
+                            <label class="col form-label" for="madon">Mã đơn: </label>
+                            <input type="text" id="madon" name="madon" class="col form-control" value="<?php echo $madon ?>" disabled />
+                        </div>
+
+
+                        <!-- Username input -->
+                        <div class="row my-3 form-outline d-flex align-items-center">
+                            <label class="col form-label" for="username">User: </label>
+                            <input list="nguoi_dung" id="username" name="username" class="col form-control" onchange="checkUserList(this)" required />
+
+                        </div>
+
+                        <!-- Họ tên input -->
+                        <div class="row my-2 form-outline d-flex align-items-center ">
+                            <label class="col form-label" for="fullname">Họ tên</label>
+                            <input type="text" id="fullname" name="fullname" class="col form-control" value="" disabled />
+                        </div>
+
+
+                        <!-- Giới tính input -->
+                        <div class="row my-2 form-outline d-flex align-items-center">
+                            <label class="col form-label" for="gender">Giới tính</label>
+                            <input type="text" id="gender" name="gender" class="col form-control" value="" disabled />
+                        </div>
+
+                        <!-- Ngày input -->
+                        <div class="row my-2 form-outline d-flex align-items-center">
+                            <label class="col form-label" for="date">Ngày thanh toán</label>
+                            <input type="date" id="date" name="date" class="col form-control" value="<?php echo $currentDate ?>" />
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-8">
+                        <div class="overflow-auto" style="width: 90%; height: 320px; margin: auto;">
+                            <table class="table table-bordered table-hover text-center m-0">
+                                <thead>
+                                    <tr>
+                                        <th>STT</th>
+                                        <th>Mặt hàng</th>
+                                        <th>Số lượng</th>
+                                        <th>Số tiền</th>
+                                        <th class="w-25">Cập nhật</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="body_table">
+                                    <tr style="height: 2rem;" onclick="addRow()">
+                                        <td colspan="5" style="margin: auto">
+                                            <img src="../assets/images/png/icons/more.png" style="width: 18px; height: 18px" alt="">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
 
+        <datalist id="nguoi_dung">
+            <?php foreach ($nguoi_dung as $value) { ?>
+                <option value="<?php echo $value['USERNAME']; ?>" 
+                        data-fullname="<?php echo $value['HOTEN']; ?>" 
+                        data-gender="<?php echo $value['GIOITINH']; ?>"></option>
+            <?php } ?>
+        </datalist>
+
+        <datalist id="mat_hang">
+            <?php foreach ($mat_hang as $value) { ?>
+                <option value="<?php echo $value['TENHANG']; ?>" 
+                        data-mahang="<?php echo $value['MAHANG']; ?>" 
+                        data-dongia="<?php echo $value['DONGIA']; ?>"></option>
+            <?php } ?>
+        </datalist>
 
 
     </div>

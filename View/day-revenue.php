@@ -2,7 +2,7 @@
 session_start();
 include "../Model/db_connect.php";
 
-date_default_timezone_set('Asia/Hong_Kong');
+date_default_timezone_set('Asia/Ho_Chi_Minh');
 $currentDate = date('Y-m-d', time());
 $total = 0;
 
