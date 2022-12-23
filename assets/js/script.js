@@ -81,7 +81,7 @@ function removeButton(no) {
     //row.innerHTML = "";
     row.remove();
 
-    for (let i = 0; i < length - 2; i++){
+    for (let i = 0; i < length - 2; i++) {
         body.children[i].firstElementChild.innerHTML = i + 1;
     }
 }
@@ -111,7 +111,7 @@ function checkUserList(el) {
 }
 
 // Chuẩn bị dữ liệu form cho món được nhập ở purchase.php
-function checkItemList(el) {    
+function checkItemList(el) {
     let row = el.parentElement.parentElement;
     let index = row.firstElementChild.innerHTML;
 
@@ -137,41 +137,63 @@ function checkItemList(el) {
     el.setAttribute('placeholder', 'Món không tồn tại');
 }
 
-function checkCount(el){
+// Từ số lượng mặt hàng cập nhật đến tổng giá của món đó
+function checkCount(el) {
     let row = el.parentElement.parentElement;
-    el.value ?? 1;
+    el.value = el.value || 1;
+
     let dongia = row.children[1].children[1].value ?? 0;
     let soluong = row.children[3].firstElementChild;
+
     soluong.value = el.value * dongia;
+
+    updateTotal();
+
     return;
 }
 
+// Cập nhật tổng số tiền cần thanh toán
+function updateTotal() {
+    let body = document.getElementById('body_table');
+    let length = body.childElementCount;
+    let total = document.getElementById('total');
+    let sum = 0;
 
+    for (let i = 0; i < length - 1; i++) {
+        sum += parseInt(body.children[i].children[3].firstElementChild.value);
+    }
+
+    total.innerText = sum;
+
+}
+
+// Thêm dòng món hàng muốn mua vào đơn thanh toán trong purchase.php
 function addRow() {
     let body = document.getElementById('body_table');
     let lastRow = body.lastElementChild;
     let index = body.childElementCount;
 
+
     let plainRow = document.createElement('tr');
     plainRow.setAttribute('id', 'row' + index);
     plainRow.innerHTML =
-   `<td>${index}</td>
+        `<td>${index}</td>
 
     <!-- Tên mặt hàng nhập về -->
     <td>
-        <input type="hidden" name="mahang" value=""/>
-        <input type="hidden" name="dongia" value=""/>
-        <input list="mat_hang" name="tenhang" class="form-control-plaintext" onchange="checkItemList(this)" readonly />
+        <input type="hidden" name="mahang\[\]" value="" required/>
+        <input type="hidden" name="dongia\[\]" value=""/>
+        <input list="mat_hang" name="tenhang\[\]" class="form-control-plaintext" onchange="checkItemList(this)" readonly/>
     </td>
 
     <!-- Số lượng nhập -->
     <td>
-        <input type="number" name="soluong" class="form-control-plaintext" onchange="checkCount(this)"  min="0" max="100000" value="0" readonly />
+        <input type="number" name="soluong\[\]" class="form-control-plaintext" onchange="checkCount(this)"  min="0" max="100000" value="0" readonly required/>
     </td>
 
     <!-- Thành tiền -->
     <td>
-        <input type="number" name="thanhtien" class="form-control-plaintext" value="0" readonly/>
+        <input type="number" name="thanhtien\[\]" class="form-control-plaintext" value="0" readonly required/>
     </td>
     <td class="p-0">
     <!-- cập nhật dữ liệu thuần ở front-end -->
@@ -183,8 +205,23 @@ function addRow() {
     <button type="button" id="removeButton${index}" onclick="removeButton('${index}')" class="btn btn-outline-danger m-1">
         <img src="../assets/images/png/icons/delete.png" style="width: 18px; height: 18px" alt="">
     </button>
-    </td>`
+    </td>`;
+
     body.insertBefore(plainRow, lastRow);
+    updateTotal();
+}
+
+function purchaseSubmit() {
+    let button = document.getElementById('btnSubmit');
+    let total = document.getElementById('total');
+
+    let text = "Bạn có chắc muốn thanh toán đơn này?";
+    if (confirm(text)) {
+        if (total.innerText == 0)
+            alert('Đơn trống không thể thanh toán')
+        else
+            button.type = "submit";
+    }
 }
 
 /*
