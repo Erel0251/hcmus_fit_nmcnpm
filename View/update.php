@@ -10,7 +10,7 @@ $tenhang=$_POST['tenhang'];
 $image=$_POST['image'];
 $loaihang=$_POST['loaihang'];
 $dongia=$_POST['dongia'];
-$soluong=['soluong'];
+$soluong=$_POST['soluong'];
 
 $conn->query("SET FOREIGN_KEY_CHECKS=0");
 $sql="UPDATE `mat_hang` SET `MAHANG` = '$MAHANG', `TENHANG` = '$tenhang', `IMAGE` = '$image', `LOAIHANG` = '$loaihang',`DONGIA` = '$dongia', `SOLUONG` = '$soluong' WHERE `mat_hang`.`MAHANG` = '$id'";

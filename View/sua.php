@@ -8,13 +8,8 @@ include "../Model/db_connect.php";
 $MAHANG = $_GET['id'];
 $edit_sql = "SELECT * FROM `mat_hang` WHERE MAHANG='$MAHANG'";
 $result = $conn->query($edit_sql);
-
 $result->setFetchMode(PDO::FETCH_ASSOC);
 $row = $result->fetch();
-
-
-
-
 
 ?>
 
