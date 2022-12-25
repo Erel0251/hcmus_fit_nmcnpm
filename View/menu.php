@@ -90,7 +90,7 @@ $success = isset($_GET['Success']) ? $_GET['Success'] : "";
                 <?php } ?>
 
                 <div class="col-4 align-items-center justify-content-center p-0 text-center">
-                    <a class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#Modal" 
+                    <a class="btn btn-outline-info" style="padding: 30px" data-bs-toggle="modal" data-bs-target="#Modal" 
                         onclick="addModal(`<?php echo $mahang ?>`)">
                         <img src="../assets/images/png/icons/button.png" >
                     </a>

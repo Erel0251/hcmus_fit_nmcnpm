@@ -2,22 +2,30 @@
 session_start();
 include "../Model/db_connect.php";
 
-
 if (isset($_GET['keyword'])) {
     $min = $_GET['min'] ?: 0;
     $max = $_GET['max'] ?: 100000;
     $minmax = " WHERE `DONGIA` >= " . $min . " AND `DONGIA` <= " . $max;
     $keyword = $_GET['keyword'] ? " AND `TENHANG` LIKE '%" . $_GET['keyword'] . "%'": '';
     $type = " AND LOAIHANG LIKE ''";
+    $condition = "";
 
     if (filter_has_var(INPUT_GET, 'type')){
         $temp = array_map(fn ($value) =>'\'' . $value . '\'',$_GET['type']);
         
-        $type = " AND `LOAIHANG` IN (" . implode(", ", $temp) . ")";
-          
+        $type = " AND `LOAIHANG` IN (" . implode(", ", $temp) . ")"; 
     }
 
-    $search = $minmax . $keyword . $type;
+    if (filter_has_var(INPUT_GET, 'condition')){
+        foreach($_GET['condition'] as $value){
+            if ($value == "Con")
+                $condition = $condition . " AND SOLUONG > 0";
+            if ($value == "Het")
+                $condition = $condition . " AND SOLUONG = 0";
+            }
+    }
+
+    $search = $minmax . $keyword . $type . $condition;
 } else {
     $search = "";
 }
@@ -62,7 +70,7 @@ $count = 0;
             <!-- Body menu -->
             <div class="row overflow-auto mt-1 border border-black justify-content-center align-items-center" style="height: 500px; border-width: 20px;">
                 <?php while ($row = $query->fetch()) { $count++;?>
-                <div class="col-4 border border-secondary d-flex flex-column justify-content-center">
+                <div class="col-12 col-md-6 col-xl-4 border border-secondary d-flex flex-column justify-content-center">
                     <img src="<?php echo $row['IMAGE'] ?>" class="align-self-center mt-2" style="width: 350px; height: 200px;" alt="">
                     <div class="h4 text-center text-dark">
                     <?php echo $row['TENHANG'] ?>

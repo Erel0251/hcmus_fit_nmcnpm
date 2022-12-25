@@ -94,7 +94,7 @@
 
 <!-- Image -->
 <div class="row position-relative">
-    <img src="../assets/images/svg/background2.svg" class="img p-0" style="filter: brightness(70%)" alt="">
+    <img src="../assets/images/svg/background2.svg" class="img p-0" style="filter: brightness(70%);" alt="">
     <div class="text-white position-absolute" style="left: 25px; top: 10px;">
         <div class="h4">Cần 1 bữa ăn ngon bổ rẻ?</div>
         <div class="h5">Đừng lo</div>
