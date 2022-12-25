@@ -129,9 +129,9 @@
     - [X] Tìm kiếm đồ ăn, thức uống
     - [X] Hiện chức năng tùy thuộc vào vai trò (Khách hàng, thu ngân, quản lý)
     - [X] Hiện doanh thu theo ngày/tháng (thu ngân)
-    - [ ] Thanh toán (thu ngân)
-    - [ ] Nhập hàng (quản lý)
-    - [ ] Cập nhật thực đơn (quản lý)
+    - [X] Thanh toán (thu ngân)
+    - [X] Nhập hàng (quản lý)
+    - [X] Cập nhật thực đơn (quản lý)
 - [X] Viết readme và báo cáo
 - [X] Triển khai (local/ hosting)
 - [ ] Cải thiện UI
