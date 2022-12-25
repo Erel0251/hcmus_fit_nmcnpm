@@ -122,7 +122,7 @@
 - [X] Tạo front-end với Html/Bootstrap
 - [X] Chuyển thành back-end kiến trúc Serverside với PHP
 - [X] Tạo cơ sở dữ liệu với MySQL
-- [ ] Tính năng
+- [X] Tính năng
     - [X] Đăng nhập/đăng ký sử dụng tài khoản
     - [X] Cập nhật thông tin tài khoản người dùng
     - [X] Hiện thực đơn
