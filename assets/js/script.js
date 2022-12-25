@@ -51,7 +51,7 @@ function editButton(no) {
 
 }
 
-// Xóa dòng trong bảng ở inventory.php
+// Xác nhận xóa dòng trong bảng ở inventory.php
 function deleteButton(no) {
     let button = document.getElementById('deleteButton' + no);
 
@@ -61,7 +61,7 @@ function deleteButton(no) {
     }
 }
 
-// thêm dòng vào database ở inventory.php
+// Xác nhận thêm dòng vào database ở inventory.php
 function updateButton(no) {
     let button = document.getElementById('updateButton' + no);
 
@@ -211,6 +211,7 @@ function addRow() {
     updateTotal();
 }
 
+// Xác nhận thanh toán
 function purchaseSubmit() {
     let button = document.getElementById('btnSubmit');
     let total = document.getElementById('total');
@@ -224,8 +225,72 @@ function purchaseSubmit() {
     }
 }
 
-/*
-id="<?php echo "updateButton" . $i ?>" onclick="updateButton('<?php echo $i ?>')" 
-id="<?php echo "editButton" . $i ?>" onclick="editButton('<?php echo $i ?>')" id="<?php echo "image" . $i ?>" 
- id="<?php echo "deleteButton" . $i ?>" onclick="deleteButton('<?php echo $i ?>')" 
-*/
+// Cập nhật món ăn (mặt hàng)
+function updateModal(no){
+    // dữ liệu gốc
+    let mahang = document.getElementById('mahang' + no).dataset.mahang;
+    let tenhang = document.getElementById('tenhang' + no).innerText;
+    let img = document.getElementById('img' + no).dataset.src;
+    let loaihang = document.getElementById('mahang' + no).dataset.loaihang;
+    let dongia = document.getElementById('dongia' + no).innerText.replace(/\,/g, "");
+    let soluong = document.getElementById('soluong' + no).innerText;
+
+    // Form
+    let value_mahang = document.getElementById('id');
+    let input_mahang = document.getElementById('mahang');
+    let input_tenhang = document.getElementById('tenhang');
+    let input_image = document.getElementById('image');
+    let input_loaihang = document.getElementById('loaihang');
+    let input_dongia = document.getElementById('dongia');
+    let input_soluong = document.getElementById('soluong');
+    let title = document.getElementById('ModalThemLabel');
+    let btn = document.getElementById('submit');
+
+    btn.setAttribute('name', 'update');
+    btn.innerText = "Cập nhật";
+    title.innerText = "Sửa món ăn";
+    value_mahang.value = input_mahang.value = mahang;
+    input_tenhang.value = tenhang;
+    input_image.value = img;
+    input_loaihang.value = loaihang;
+    input_dongia.value = dongia;
+    input_soluong.value = soluong;
+}
+
+function addModal(mahang){
+    // Form
+    let value_mahang = document.getElementById('id');
+    let input_mahang = document.getElementById('mahang');
+    let input_tenhang = document.getElementById('tenhang');
+    let input_image = document.getElementById('image');
+    let input_loaihang = document.getElementById('loaihang');
+    let input_dongia = document.getElementById('dongia');
+    let input_soluong = document.getElementById('soluong');
+    let title = document.getElementById('ModalThemLabel');
+    let btn = document.getElementById('submit');
+
+    btn.setAttribute('name', 'add');
+    btn.innerText = "Thêm";
+    title.innerText = "Thêm món ăn";
+    value_mahang.value = input_mahang.value = mahang;
+    input_tenhang.value = '';
+    input_image.value = '';
+    input_loaihang.value = '';
+    input_dongia.value = 0;
+    input_soluong.value = 0;
+}
+
+function submitButton(){
+    let title = document.getElementById('ModalThemLabel');
+    let btn = document.getElementById('submit');
+    let text;
+    if (title.innerText == "Thêm món ăn"){
+        text = "Bạn có chắc muốn thêm món này?";
+    } else{
+        text = "Bạn có chắc muốn sửa món này?";
+    }
+
+    if (confirm(text)) 
+        btn.type = "submit";
+    
+}

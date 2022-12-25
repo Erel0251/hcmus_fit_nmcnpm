@@ -24,7 +24,6 @@ if (isset($_POST['update'])) {
     $query = $conn->query($PhieuNhap);
 
     header("Location: ../View/inventory.php?Success=Update row successfully");
-    exit();
 
 } else if (isset($_POST['delete'])) {
     $CtNhap = "DELETE FROM ct_nhap WHERE `ct_nhap`.`MAHANG` = '$mahang' AND `ct_nhap`.`MAPHIEUNHAP` = '$maphieu'";
@@ -32,6 +31,8 @@ if (isset($_POST['update'])) {
     $query = $conn->query($CtNhap);
 
     header("Location: ../View/inventory.php?Success=Delete row successfully");
-    exit();
+    
 } 
+
+exit();
 ?>

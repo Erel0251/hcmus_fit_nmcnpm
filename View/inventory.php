@@ -17,27 +17,6 @@ while ($row = $query->fetch()) {
     array_push($listInventory, $row);
 }
 
-/* 
-$sql = "SELECT hang.MAHANG, hang.TENHANG 
-        FROM mat_hang hang 
-        WHERE hang.LOAIHANG LIKE 'Thức uống';";
-
-$query = $conn->query($sql);
-$query->setFetchMode(PDO::FETCH_ASSOC);
-
-$stock = array();
-while ($row = $query->fetch()) {
-    array_push($stock, $row);
-}
-
-
-<select class="custom-select" id="<?php echo "name" . $i ?>" name="tenhang">
-    <?php for ($item = 0; $item < count($stock); $item++) { ?>
-        <option value="<?php echo $stock[$item]['MAHANG'] ?>" <?php if ($listInventory[$i]['MAHANG'] == $stock[$item]['MAHANG']) echo "selected" ?>><?php echo $stock[$item]['TENHANG'] ?></option>
-    <?php } ?>
-</select>
-*/
-
 $tenPerPage = ceil(count($listInventory) / 10);
 $page = isset($_GET['page']) ? $_GET['page'] - 1 : 0;
 $prev = $page <= 0 ? "disabled" : "";

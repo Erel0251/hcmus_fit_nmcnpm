@@ -2,10 +2,23 @@
 session_start();
 include "../Model/db_connect.php";
 
+$sql = "SELECT COUNT(MAHANG) AS STT
+        FROM mat_hang;";
+
+$query = $conn->query($sql);
+$query->setFetchMode(PDO::FETCH_ASSOC);
+$row = $query->fetch();
+
+$index = 0;
+
+$mahang = "MH" . (sprintf("%03d\n", $row['STT'] + 1));
+
 $sql = "SELECT * FROM `mat_hang`";
 // WHERE `LOAIHANG` LIKE 'Đồ ăn'
 $query = $conn->query($sql);
 $query->setFetchMode(PDO::FETCH_ASSOC);
+
+$success = isset($_GET['Success']) ? $_GET['Success'] : "";
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +39,10 @@ $query->setFetchMode(PDO::FETCH_ASSOC);
 
     <!-- ========== CSS and Javascript  ========== -->
     <link rel="stylesheet" href="../assets/css/style.css">
-    
+    <script src="../assets/js/script.js"></script>
+    <script>
+        let text = '<?php echo $success ?>';
+    </script>
 
     <title>Quản lý căn tin</title>
 </head>
@@ -38,109 +54,109 @@ $query->setFetchMode(PDO::FETCH_ASSOC);
 
             <!-- Header -->
             <?php include "./header.php" ?>
-           
+
             <!-- Body -->
-            <a  class= "btn btn-success" style="margin-top: 10px;" data-bs-toggle="modal" data-bs-target="#ModalThem">
-                <img  src="../assets/images/png/icons/them.png"  width= 50px; height= 50px>
-             </a>
 
-            <div class="row overflow-auto mt-1 border border-black justify-content-center align-items-center" style="height: 500px; border-width: 20px;">
-                <?php while ($row = $query->fetch()) { ?>
-                <div class="col-4 border border-secondary d-flex flex-column justify-content-center">
-                    <img src="<?php echo $row['IMAGE'] ?>" class="align-self-center" style="margin-top: 18px; width: 350px; height: 200px;" alt="">
-                    <div class="h4 text-center text-dark">
-                    <?php echo $row['TENHANG'] ?>
-                    </div>
-                    <div style="margin-bottom: 10px;"class="d-flex flex-row justify-content-between">
-                        <div class="h6 text-primary">Mã hàng:  <?php echo $row['MAHANG'] ?></div>
-                        <div class="h6 text-secondary">Giá: <?php echo number_format($row['DONGIA']) . "đ" ?></div>
-                        <div class="h6 text-primary">Còn:  <?php echo $row['SOLUONG'] ?></div>
-                        
 
-                       
-                        
-                    </div>
-                    <div class="d-flex justify-content-end " style="margin-bottom: 7px;" >
-                            
-                            <a style="margin-right:7px"   class= "btn btn-warning"  href="sua.php?id=<?php echo $row['MAHANG'];?> ">
-                            <img src="../assets/images/png/icons/editing.png" width= 18x; height= 18px>
-                             </a>
-                            <a class= "btn btn-danger" onclick="return confirm('Bạn có muốn xóa món ăn này không?');" href="xoa.php?id=<?php echo $row['MAHANG'];?> ">
-                            <img  src="../assets/images/png/icons/delete.png" width= 18px; height= 18px>
-                            </a>
+            <div class="row overflow-auto mt-1 border border-black justify-content-center align-items-center" 
+                 style="height: 500px; border-width: 20px;" >
+                <?php while ($row = $query->fetch()) { $index++;?>
+                    <div class="col-12 col-md-6 col-xl-4 px-3 border border-secondary btn btn-light d-flex flex-column justify-content-center" 
+                    style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#Modal" onclick="updateModal(<?php echo $index ?>)">
+                        <img src="<?php echo $row['IMAGE'] ?>" id="<?php echo "img" . $index ?>" data-src="<?php echo $row['IMAGE'] ?>" class="align-self-center mt-2" style="width: 350px; height: 200px;" alt="">
+                        <div class="h4 text-center text-dark" id="<?php echo "tenhang" . $index ?>">
+                            <?php echo $row['TENHANG'] ?>
                         </div>
-                </div>
-                
+                        <div style="margin-bottom: 10px;" class="d-flex flex-row justify-content-between" 
+                             id="<?php echo "mahang" . $index ?>" 
+                             data-mahang="<?php echo $row['MAHANG'] ?>"
+                             data-loaihang="<?php echo $row['LOAIHANG'] ?>">
+                            <div class="h6 text-secondary" >Giá: <span id="<?php echo "dongia" . $index ?>"><?php echo number_format($row['DONGIA']) ?></span> đ</div>
+                            <div class="h6 text-primary" >Còn: <span id="<?php echo "soluong" . $index ?>"><?php echo $row['SOLUONG'] ?></span></div>
+                        </div>
+
+                        <!--
+                        <div class="d-flex justify-content-end " style="margin-bottom: 7px;" >
+                                
+                                <a style="margin-right:7px"   class= "btn btn-warning"  href="sua.php?id=<?php echo $row['MAHANG']; ?> ">
+                                <img src="../assets/images/png/icons/editing.png" width= 18x; height= 18px>
+                                </a>
+                                <a class= "btn btn-danger" onclick="return confirm('Bạn có muốn xóa món ăn này không?');" href="xoa.php?id=<?php echo $row['MAHANG']; ?> ">
+                                <img  src="../assets/images/png/icons/delete.png" width= 18px; height= 18px>
+                                </a>
+                            </div>
+                -->
+                    </div>
                 <?php } ?>
+
+                <div class="col-4 align-items-center justify-content-center p-0 text-center">
+                    <a class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#Modal" 
+                        onclick="addModal(`<?php echo $mahang ?>`)">
+                        <img src="../assets/images/png/icons/button.png" >
+                    </a>
+                </div>
             </div>
-           
 
 
 
-    </div>
-    <!--
-    <div>Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a
-            href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-    <div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a>
-        from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-    <div>Icons made by <a href="https://www.flaticon.com/authors/th-studio" title="th studio">th studio</a> from <a
-            href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 
--->
-<script src="../assets/js/script.js"></script>
+        </div>
 
-<!-- Modal  Them-->
-<div class="modal fade" id="ModalThem" tabindex="-1" role="dialog" aria-labelledby="ModalThemLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title col text-center" id="ModalThemLabel">Thêm món ăn</h2>
-       
-      </div>
-      <div class="modal-body">
-      <div class="container">
-        
-        <form action="them.php" method="post" id="formthem">
-            <div class="form-group">
-                 <label for="mahang">Mã hàng </label>
-                 <input type="text" id ="mahang" class="form-control" name="mahang">
-                 </div>
-            <div class="form-group">
-                <label for="tenhang">Tên hàng </label>
-                 <input type="text" id ="tenhang" class="form-control" name="tenhang">
+        <!-- Modal  Them-->
+        <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalThemLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title col text-center" id="ModalThemLabel">Thêm món ăn</h2>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+
+                            <form action="../Control/update-menu.php" method="post" id="formthem">
+                                <div class="form-group">
+                                    <label for="mahang">Mã hàng </label>
+                                    <input type="hidden" id="id" name="mahang" value="">
+                                    <input type="text" id="mahang" class="form-control" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tenhang">Tên hàng </label>
+                                    <input type="text" id="tenhang" class="form-control" name="tenhang" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="image">Image </label>
+                                    <input type="text" id="image" class="form-control" name="image" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="loaihang">Loại hàng </label>
+                                    <input list="loai_hang" id="loaihang" class="form-control" name="loaihang" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="dongia">Đơn giá </label>
+                                    <input type="nunber" id="dongia" class="form-control" name="dongia" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="soluong">Số lượng </label>
+                                    <input type="number" id="soluong" class="form-control" name="soluong" required>
+                                </div>
+                                <br>
+
+
+                            </form>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                        <button type="button" id="submit" name="add" value="" form="formthem" class="btn btn-success" onclick="submitButton()">Thêm</button>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="image">Image </label>
-                 <input type="text" id ="image" class="form-control" name="image">
-            </div>
-            <div class="form-group">
-                <label for="loaihang">Loại hàng </label>
-                 <input type="text" id ="loaihang" class="form-control" name="loaihang">
-            </div>
-            <div class="form-group">
-                <label for="dongia">Đơn giá </label>
-                 <input type="text" id ="dongia" class="form-control" name="dongia">
-            </div>
-            <div class="form-group">
-                <label for="soluong">Số lượng </label>
-                 <input type="text" id ="soluong" class="form-control" name="soluong">
-            </div>
-            <br>
-           
-           
-        </form>
+        </div>
 
-    </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" form ="formthem" class="btn btn-success">Thêm</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
+        <datalist id="loai_hang">
+            <option value="Đồ ăn"></option>
+            <option value="Thức uống"></option>
+        </datalist>
 
 </body>
 
